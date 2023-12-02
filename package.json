@@ -1,0 +1,11 @@
+{
+  "name": "group-group6",
+  "version": "1.0.0",
+  "description": "quan ly ban sach",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "21120612-21120393",
+  "license": "ISC"
+}

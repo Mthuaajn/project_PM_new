@@ -4,7 +4,6 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 const app = express();
 
-process.noDeprecation = true;
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));

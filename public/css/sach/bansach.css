@@ -1,0 +1,127 @@
+#book-management {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  padding-bottom: 1rem;
+  padding-inline: 2rem;
+}
+
+#title {
+  margin-block: 2.3rem;
+  color: #000;
+  font-family: Inter;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+}
+
+#section1 {
+  width: 30%;
+}
+
+#section2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#section2 .top {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.table-top {
+  width: 100%;
+  max-height: 20rem;
+  overflow: auto;
+}
+
+.table thead th {
+  vertical-align: middle !important;
+}
+
+.action .form-control {
+  flex: 1;
+  width: 100%;
+  height: 3.6rem;
+  border: 1px solid #000;
+  border-radius: 0.8rem;
+  padding: 0 1.6rem;
+  color: #000;
+  font-family: Inter;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 1rem;
+}
+
+.action button {
+  height: 4.6rem;
+  border: 1px solid #000;
+  border-radius: 0.8rem;
+  padding: 0 4rem;
+  background-color: #000;
+  color: #fff;
+  font-family: Inter;
+  font-size: 1.6rem;
+  font-style: normal;
+  line-height: normal;
+  cursor: pointer;
+	border-radius: 3rem;
+}
+
+.bottom {
+  max-height: 30rem;
+  overflow-y: auto;
+}
+
+.bottom .btn-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+	gap: 1rem;
+}
+
+.btn-list button {
+  height: 4.6rem;
+  border: 1px solid #000;
+  border-radius: 0.8rem;
+  padding: 0 4rem;
+  background-color: #000;
+  color: #fff;
+  font-family: Inter;
+  font-size: 1.6rem;
+  font-style: normal;
+  line-height: normal;
+  cursor: pointer;
+	border-radius: 3rem;
+}
+
+.form-select {
+  flex: 1;
+  width: 100%;
+  height: 4.6rem;
+  border: 1px solid #000;
+  border-radius: 0.8rem;
+  padding: 0 1.6rem;
+  color: #000;
+  font-family: Inter;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.table button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}

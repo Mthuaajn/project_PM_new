@@ -1,0 +1,43 @@
+.accordion-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 !important;
+}
+
+.accordion-button {
+  color: #000;
+
+  font-family: Inter;
+  font-size: 24px !important;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+	background-color: #fff !important;
+}
+
+.accordion-body a {
+	width: 100%;
+}
+
+.accordion-body button {
+  width: 100%;
+  color: #000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #908f8f;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+
+.accordion-body button:hover {
+  background-color: #e6e7a0;
+}

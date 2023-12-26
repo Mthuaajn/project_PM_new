@@ -9,5 +9,6 @@ Thành viên tham gia:
 21120578 - Trần Minh Triết
 21120610 - Trương Đức Phát
 Công nghệ sử dụng :
+font-end: html, css,boostrap
 back-end : nodejs
 Database : mongodb

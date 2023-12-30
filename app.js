@@ -6,6 +6,7 @@ const handlebars = require("express-handlebars");
 dotenv.config({ path: "./config.env" });
 const app = express();
 
+const khachHangRouter = require('./routers/khachhang')
 const qlsach = require("./routers/qlsach");
 const dlsach = require("./routers/dlsach");
 const nhapsach = require("./routers/nhapsach");
@@ -37,7 +38,7 @@ app.use("/dlsach", dlsach);
 app.use("/nhapsach", nhapsach);
 app.use("/bansach", bansach);
 app.use("/timkiemsach", timkiemsach);
-
+app.use('/khachhangs', khachHangRouter);
 app.get("/", (req, res) => {
 	res.render("home");
 });

@@ -12,6 +12,8 @@ const dlsach = require("./routers/dlsach");
 const nhapsach = require("./routers/nhapsach");
 const bansach = require("./routers/bansach");
 const timkiemsach = require("./routers/timkiemsach");
+const thutien = require("./routers/thutien");
+const timkiemkhachhang = require("./routers/timkiemkhachhang");
 
 if (process.env.NODE_ENV === "development") {
 	app.use(morgan("dev"));
@@ -39,6 +41,8 @@ app.use("/nhapsach", nhapsach);
 app.use("/bansach", bansach);
 app.use("/timkiemsach", timkiemsach);
 app.use('/khachhangs', khachHangRouter);
+app.use('/thutien', thutien);
+app.use('/timkiemkhachhang', timkiemkhachhang);
 app.get("/", (req, res) => {
 	res.render("home");
 });

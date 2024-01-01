@@ -1,91 +1,142 @@
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QL NHÀ SÁCH</title>
     <link
-      href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
-      rel='stylesheet'
-      integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN'
-      crossorigin='anonymous'
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
     />
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css' />
-    <link rel='stylesheet' href='/css/partials/sidebar.css' />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="/css/partials/sidebar.css" />
   </head>
   <body>
-    <div class='accordion' id='accordionExample'>
-      <div class='accordion-item'>
-        <h2 class='accordion-header' id='headingSach'>
-          <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapseSach' aria-expanded='true' aria-controls='collapseSach'>
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSach">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseSach"
+            aria-expanded="true"
+            aria-controls="collapseSach"
+          >
             Sách
           </button>
         </h2>
-        <div id='collapseSach' class='accordion-collapse collapse show' aria-labelledby='headingSach' data-bs-parent='#accordionExample'>
-          <div class='accordion-body'>
-            <a href='/qlsach'>
+        <div
+          id="collapseSach"
+          class="accordion-collapse collapse show"
+          aria-labelledby="headingSach"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <a href="/sach/qlsach">
               <button>QL SÁCH</button>
             </a>
-            <a href='/dlsach'>
+            <a href="/sach/dlsach">
               <button>Dữ liệu sách</button>
             </a>
-            <a href='/nhapsach'>
+            <a href="/sach/nhapsach">
               <button>Nhập sách</button>
             </a>
-            <a href='/bansach'>
+            <a href="/sach/bansach">
               <button>Bán sách</button>
             </a>
-            <a href='/timkiemsach'>
+            <a href="/sach/timkiemsach">
               <button>Tìm kiếm sách</button>
             </a>
           </div>
         </div>
       </div>
-      <div class='accordion-item'>
-        <h2 class='accordion-header' id='headingKhachHang'>
-          <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapseKhachHang' aria-expanded='true' aria-controls='collapseKhachHang'>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingKhachHang">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseKhachHang"
+            aria-expanded="true"
+            aria-controls="collapseKhachHang"
+          >
             Khách hàng
           </button>
         </h2>
-        <div id='collapseKhachHang' class='accordion-collapse collapse show' aria-labelledby='headingKhachHang' data-bs-parent='#accordionExample'>
-          <div class='accordion-body'>
-            <a href='/khachhangs'>
+        <div
+          id="collapseKhachHang"
+          class="accordion-collapse collapse show"
+          aria-labelledby="headingKhachHang"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <a href="/khachhangs">
               <button>QL Khách hàng</button>
             </a>
-            <a href='/thutien'>
+            <a href="/thutien">
               <button>Thu tiền</button>
             </a>
-            <a href='/timkiemkhachhang'>
+            <a href="/timkiemkhachhang">
               <button>Tìm kiếm khách hàng</button>
             </a>
           </div>
         </div>
       </div>
-      <div class='accordion-item'>
-        <h2 class='accordion-header' id='headingBaoCao'>
-          <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapseBaoCao' aria-expanded='true' aria-controls='collapseBaoCao'>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingBaoCao">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseBaoCao"
+            aria-expanded="true"
+            aria-controls="collapseBaoCao"
+          >
             Báo cáo
           </button>
         </h2>
-        <div id='collapseBaoCao' class='accordion-collapse collapse show' aria-labelledby='headingBaoCao' data-bs-parent='#accordionExample'>
-          <div class='accordion-body'>
-            <a href='/ton'>
+        <div
+          id="collapseBaoCao"
+          class="accordion-collapse collapse show"
+          aria-labelledby="headingBaoCao"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <a href="/ton">
               <button>Báo cáo tồn</button>
             </a>
-            <a href='/nocong'>
+            <a href="/nocong">
               <button>Báo cáo công nợ</button>
             </a>
           </div>
-        </div>  
+        </div>
       </div>
-      <div class='accordion-item'>
-        <h2 class='accordion-header' id='headingTuyChinh'>
-          <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapseTuyChinh' aria-expanded='true' aria-controls='collapseTuyChinh'>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTuyChinh">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseTuyChinh"
+            aria-expanded="true"
+            aria-controls="collapseTuyChinh"
+          >
             Tuỳ chỉnh
           </button>
         </h2>
-        <div id='collapseTuyChinh' class='accordion-collapse collapse show' aria-labelledby='headingTuyChinh' data-bs-parent='#accordionExample'>
-          <div class='accordion-body'>
-            <a href='/quydinh'>
+        <div
+          id="collapseTuyChinh"
+          class="accordion-collapse collapse show"
+          aria-labelledby="headingTuyChinh"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <a href="/quydinh">
               <button>Thay đổi quy định</button>
             </a>
           </div>
@@ -93,9 +144,9 @@
       </div>
     </div>
     <script
-      src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js'
-      integrity='sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL'
-      crossorigin='anonymous'
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
     ></script>
   </body>
 </html>

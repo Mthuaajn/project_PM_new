@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon sever.js"
+    "start": "nodemon sever.js",
+    "import": "node ./data/import-data.js --import",
+    "delete": "node ./data/import-data.js --delete"
   },
   "author": "21120612-21120393-21120618-21120578-21120610",
   "license": "ISC",

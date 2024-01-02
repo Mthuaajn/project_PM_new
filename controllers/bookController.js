@@ -42,7 +42,7 @@ exports.qlsach = async (req, res, next) => {
       } else {
         await bookModel.findByIdAndDelete(book._id);
       }
-      
+
       res.redirect(req.headers.referer);
       break;
     case "update":
@@ -84,4 +84,12 @@ exports.nhapsach = async (req, res, next) => {
     books,
   };
   res.render("sach/nhapsach", data);
+};
+
+exports.renderPagebanSach = async (req, res, net) => {
+  const books = await bookModel.find({});
+  const data = {
+    books,
+  };
+  res.render("sach/bansach",data);
 };

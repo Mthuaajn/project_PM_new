@@ -42,7 +42,7 @@
             <table class="table align-middle table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">Mã Sách</th>
+                  <th scope="col">Mã phiếu nhập</th>
                   <th class="text-center" scope="col">Tên Sách</th>
                   <th scope="col">Số lượng</th>
                   <th scope="col">Đơn giá nhập</th>
@@ -68,17 +68,29 @@
             </table>
 
           </div>
-          <div class="action">
-            <input type="text" class="form-control" id="bookName" placeholder="Nhập Số lượng" />
-            <input type="text" class="form-control" id="bookPrice" placeholder="Nhập giá" />
-            <button type="button" class="btn btn-primary">Thêm Sách</button>
-          </div>
-        </div>
+          <form action="#" method="post">
+            <div class="action">
+              <select
+                id="bookPublisher"
+                class="form-select"
+                name="bookPublisher"
+                aria-label="Sách"
+              >
+                <option selected>Chọn Sách</option>
+                {{#each books}}
+                  <option value="{{tensach}}">{{tensach}}</option>
+                {{/each}}
+              </select>
+              <input type="text" class="form-control" id="bookName" name="bookName" placeholder="Nhập số lượng" />
+              <input type="text" class="form-control" id="bookPrice" name="bookPrice" placeholder="Nhập giá" />
+              <button type="submit" class="btn btn-primary">Thêm Sách</button>
+            </div>
+          </form>
         <div class="bottom">
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th scope="col">Mã hóa đơn</th>
+                <th scope="col">Mã phiếu nhập</th>
                 <th scope="col">Ngày nhập</th>
                 <th scope="col">Tổng tiền</th>
                 <th scope="col">Thực hiện</th>

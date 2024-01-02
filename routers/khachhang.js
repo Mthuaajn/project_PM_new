@@ -2,6 +2,7 @@ const {
     createKhachHang,
     deleteKhachHang,
     renderKhachHangs,
+    renderTimKiemKhachHangs,
     renderKhachHangEdit,
     editKhachHang,
   } = require("../controllers/KhachHangController");
@@ -11,6 +12,8 @@ const router = express.Router();
 
 // Render all KhachHangs
 router.get("/", renderKhachHangs);
+
+router.get("/search", renderTimKiemKhachHangs);
 
 router.post("/add", createKhachHang);
 

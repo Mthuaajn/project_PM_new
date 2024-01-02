@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const KhachHang = require("../models/khachHangModel.js");
 
-router.get('/', (req, res, next) => {
-	res.render('khach_hang/timkiemkhachhang', { title: 'Book Management' });
+router.get('/', async (req, res, next) => {
+
 });
 
 module.exports = router;

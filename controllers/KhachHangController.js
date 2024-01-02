@@ -13,6 +13,19 @@ const renderKhachHangs = async (req, res) => {
     }
 };
 
+const renderTimKiemKhachHangs = async (req, res) => {
+    try {
+        const KhachHangs = await KhachHang.find().lean();
+        console.log(KhachHangs, "abc");
+        res.render("khach_hang/timkiemkhachhang", {
+            khachHangs: KhachHangs,
+        });
+    } catch (error) {
+        console.log({error});
+        return res.render("error", {errorMessage: error.message});
+    }
+};
+
 const createKhachHang = async (req, res, next) => {
     try {
         const khachHang = new KhachHang(req.body);
@@ -43,6 +56,7 @@ const deleteKhachHang = async (req, res, next) => {
 
 module.exports = {
     renderKhachHangs,
+    renderTimKiemKhachHangs,
     createKhachHang,
     renderKhachHangEdit,
     editKhachHang,

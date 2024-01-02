@@ -2,6 +2,8 @@ const fs = require("fs");
 const theloaiModel = require("./../models/theloaiModel");
 const nxbModel = require("./../models/nxbModel");
 const bookModel = require("./../models/bookModel");
+const ctpnhapModel = require("./../models/ctpnhapModel");
+const pNhapModel = require("./../models/pnhapModel");
 exports.getdlSach = async (req, res, next) => {
   const theloais = await theloaiModel.find({});
   const nxbs = await nxbModel.find({});
@@ -79,13 +81,57 @@ exports.renderPageQLsach = async (req, res, next) => {
 };
 
 exports.nhapsach = async (req, res, next) => {
+  const phieuNhaps = await pNhapModel.find({});
   const books = await bookModel.find({});
+  const ctPhieuNhaps = await ctpnhapModel.find({});
+
   const data = {
     books,
+    ctPhieuNhaps,
+    phieuNhaps,
   };
   res.render("sach/nhapsach", data);
 };
 
+exports.taoCTPNhap = async (req, res, next) => {
+  const query = {};
+  query["tensach"] = req.body.bookName;
+  const book = await bookModel.findOne(query);
+  const lastPhieuNhap = await ctpnhapModel.findOne().sort("-maPhieuNhap");
+  const newMaPhieuNhap = lastPhieuNhap ? lastPhieuNhap.maPhieuNhap + 1 : 1;
+  const newCTPNhap = {
+    maPhieuNhap: newMaPhieuNhap,
+    book,
+    soLuong: req.body.bookQuantity,
+    donGia: +req.body.bookPrice,
+    tongTien: req.body.bookQuantity * req.body.bookPrice,
+  };
+  const ctpnhap = await ctpnhapModel.create(newCTPNhap);
+  res.redirect(req.headers.referer);
+};
+
+exports.taoPhieuNhap = async (req, res, next) => {
+  const phieuNhaps = await pNhapModel.find({}).populate("chphieunhap");
+  const ctPhieuNhaps = await ctpnhapModel.find({});
+  const newCTPhieuNhap = ctPhieuNhaps.filter(
+    (ctPhieuNhap) =>
+      !phieuNhaps.some((phieuNhap) => {
+        return phieuNhap.chphieunhap.maPhieuNhap === ctPhieuNhap.maPhieuNhap;
+      })
+  );
+  const data = [];
+  newCTPhieuNhap.forEach((ctPhieuNhap) => {
+    const obj = {
+      chphieunhap: ctPhieuNhap,
+      ngaynhap: Date.now(),
+    };
+    data.push(obj);
+  });
+  await pNhapModel.create(data);
+  res.redirect(req.headers.referer);
+};
+
+// ban sach
 exports.renderPagebanSach = async (req, res, net) => {
   const books = await bookModel.find({});
   const data = {
@@ -94,6 +140,7 @@ exports.renderPagebanSach = async (req, res, net) => {
   res.render("sach/bansach", data);
 };
 
+// tim kiem sach
 exports.renderPageTimKiemSach = async (req, res, next) => {
   const books = await bookModel.find({});
   const data = {

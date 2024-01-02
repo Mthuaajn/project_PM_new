@@ -51,41 +51,50 @@
                 </tr>
               </thead>
               <tbody>
-
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Tài ăn nói của người đàn ông</td>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>
-                    <button>
-                      <img class="delete-link" src="/img/icon-bin.svg" alt="" />
-                    </button>
-                  </td>
-                </tr>
+                {{#each ctPhieuNhaps}}
+                  <tr>
+                    <th scope="row">{{maPhieuNhap}}</th>
+                    <td>{{book.tensach}}</td>
+                    <td>{{soLuong}}</td>
+                    <td>{{donGia}}</td>
+                    <td>{{tongTien}}</td>
+                    <td>
+                      <button>
+                        <img class="delete-link" src="/img/icon-bin.svg" alt="" />
+                      </button>
+                    </td>
+                  </tr>
+                {{/each}}
               </tbody>
             </table>
 
           </div>
-          <form action="#" method="post">
+          <form action="/sach/phieunhap/taosach" method="POST">
             <div class="action">
-              <select
-                id="bookPublisher"
-                class="form-select"
-                name="bookPublisher"
-                aria-label="Sách"
-              >
+              <select id="bookName" class="form-select" name="bookName" aria-label="Sách">
                 <option selected>Chọn Sách</option>
                 {{#each books}}
                   <option value="{{tensach}}">{{tensach}}</option>
                 {{/each}}
               </select>
-              <input type="text" class="form-control" id="bookName" name="bookName" placeholder="Nhập số lượng" />
-              <input type="text" class="form-control" id="bookPrice" name="bookPrice" placeholder="Nhập giá" />
+              <input
+                type="text"
+                class="form-control"
+                id="bookQuantity"
+                name="bookQuantity"
+                placeholder="Nhập số lượng"
+              />
+              <input
+                type="text"
+                class="form-control"
+                id="bookPrice"
+                name="bookPrice"
+                placeholder="Nhập giá"
+              />
               <button type="submit" class="btn btn-primary">Thêm Sách</button>
             </div>
           </form>
+        </div>
         <div class="bottom">
           <table class="table table-bordered">
             <thead>
@@ -97,32 +106,26 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>7/12/2023 12:00:00 AM</td>
-                <td>293000</td>
-                <td>
-                  <button>
-                    <img src="/img/icon-bin.svg" alt="" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>7/12/2023 12:00:00 AM</td>
-                <td>293000</td>
-                <td>
-                  <button>
-                    <img src="/img/icon-bin.svg" alt="" />
-                  </button>
-                </td>
-              </tr>
+              {{#each phieuNhaps}}
+                <tr>
+                  <th scope="row">{{chphieunhap.maPhieuNhap}}</th>
+                  <td>{{ngaynhap}}</td>
+                  <td>{{chphieunhap.tongTien}}</td>
+                  <td>
+                    <button>
+                      <img src="/img/icon-bin.svg" alt="" />
+                    </button>
+                  </td>
+                </tr>
+              {{/each}}
             </tbody>
           </table>
           <div class="btn-list">
             <button type="button" class="btn btn-primary">Tạo phiếu nhập mới</button>
             <button type="button" class="btn btn-secondary">Nhập sách</button>
-            <button type="button" class="btn btn-success">Lưu phiếu nhập</button>
+            <form action="/sach/phieunhap/taophieunhap" method="POST">
+              <button type="submit" class="btn btn-success">Lưu phiếu nhập</button>
+            </form>
           </div>
         </div>
       </div>

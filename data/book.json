@@ -5,7 +5,8 @@
     "theloai": "Thể loại A",
     "tacgia": "Tác giả A",
     "nhaxuatban": "Nhà xuất bản A",
-    "dongia": 10000
+    "dongia": 10000,
+    "soluongton": 100
   },
   {
     "masach": "MS002",
@@ -13,7 +14,8 @@
     "theloai": "Thể loại B",
     "tacgia": "Tác giả B",
     "nhaxuatban": "Nhà xuất bản B",
-    "dongia": 15000
+    "dongia": 15000,
+    "soluongton": 50
   },
   {
     "masach": "MS003",
@@ -21,7 +23,8 @@
     "theloai": "Thể loại C",
     "tacgia": "Tác giả C",
     "nhaxuatban": "Nhà xuất bản C",
-    "dongia": 12000
+    "dongia": 12000,
+    "soluongton": 120
   },
   {
     "masach": "MS004",
@@ -29,7 +32,8 @@
     "theloai": "Thể loại D",
     "tacgia": "Tác giả D",
     "nhaxuatban": "Nhà xuất bản D",
-    "dongia": 18000
+    "dongia": 18000,
+    "soluongton": 38
   },
   {
     "masach": "MS005",
@@ -37,6 +41,7 @@
     "theloai": "Thể loại E",
     "tacgia": "Tác giả E",
     "nhaxuatban": "Nhà xuất bản E",
-    "dongia": 13000
+    "dongia": 13000,
+    "soluongton": 350
   }
 ]

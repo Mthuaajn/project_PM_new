@@ -26,6 +26,10 @@ const bookSchema = new mongoose.Schema({
     type: Number,
     required: [true, "vui long nhap don gia"],
   },
+  soluongton: {
+    type: Number,
+    required: [true, "vui long nhap so luong ton"],
+  },
 });
 
 const Book = mongoose.model("Book", bookSchema);

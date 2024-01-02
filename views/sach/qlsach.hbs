@@ -23,13 +23,13 @@
           <div id="left">
             <div class="mb-3 form-item">
               <label for="bookId" class="form-label">Mã Sách</label>
-              <input
-                type="text"
-                class="form-control"
-                id="bookId"
-                name="bookId"
-                placeholder="Nhập mã sách"
-              />
+              <select id="bookId" class="form-select" name="bookId" aria-label="Chọn thể loại">
+                <option selected>Chọn Mã sách</option>
+                {{#each books}}
+                  <option value="{{masach}}">{{masach}}</option>
+                {{/each}}
+              </select>
+
             </div>
             <div class="mb-3 form-item">
               <label for="bookName" class="form-label">Tên Sách</label>
@@ -77,7 +77,7 @@
               </select>
             </div>
             <div class="mb-3 form-item">
-              <label for="bookId" class="form-label">Đơn giá</label>
+              <label for="bookPrice" class="form-label">Đơn giá</label>
               <input
                 type="text"
                 class="form-control"
@@ -90,7 +90,7 @@
         </div>
         <div id="btn-list">
           <button type="submit" name="action" value="add" class="btn btn-primary">Thêm Sách</button>
-          <button type="submit" name="action" value="save" class="btn btn-secondary">Lưu sách</button>
+          <button type="submit" name="action" value="delete" class="btn btn-secondary">Xóa sách</button>
           <button type="submit" name="action" value="update" class="btn btn-success">Cập nhật sách</button>
         </div>
       </form>
@@ -104,7 +104,7 @@
               <th scope="col">Đơn giá</th>
               <th scope="col">Nhà xuất bản</th>
               <th scope="col">Thể loại</th>
-              <th scope="col">Thực hiện</th>
+              <th scope="col">Số lượng</th>
             </tr>
           </thead>
           <tbody>
@@ -116,11 +116,7 @@
                 <td>{{dongia}}</td>
                 <td>{{nhaxuatban}}</td>
                 <td>{{theloai}}</td>
-                <td>
-                  <a href="theloai/{{_id}}" class="delete-link">
-                    <img src="/img/icon-bin.svg" alt="" />
-                  </a>
-                </td>
+                <td>{{soluongton}}</td>
               </tr>
             {{/each}}
           </tbody>

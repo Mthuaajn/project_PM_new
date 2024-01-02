@@ -33,11 +33,16 @@ exports.qlsach = async (req, res, next) => {
   };
   switch (action) {
     case "add":
-      await bookModel.create(newBook);
-      await book.save();
+      await bookModel.findByIdAndUpdate(book._id, { soluongton: book.soluongton + 1 });
       res.redirect(req.headers.referer);
       break;
-    case "save":
+    case "delete":
+      if (book.soluongton > 1) {
+        await bookModel.findByIdAndUpdate(book._id, { soluongton: book.soluongton - 1 });
+      } else {
+        await bookModel.findByIdAndDelete(book._id);
+      }
+      
       res.redirect(req.headers.referer);
       break;
     case "update":
@@ -61,7 +66,7 @@ exports.qlsach = async (req, res, next) => {
   }
 };
 
-exports.renderPage = async (req, res, next) => {
+exports.renderPageQLsach = async (req, res, next) => {
   const books = await bookModel.find({});
   const theloais = await theloaiModel.find({});
   const nxbs = await nxbModel.find({});
@@ -71,4 +76,12 @@ exports.renderPage = async (req, res, next) => {
     nxbs,
   };
   res.render("sach/qlsach", data);
+};
+
+exports.nhapsach = async (req, res, next) => {
+  const books = await bookModel.find({});
+  const data = {
+    books,
+  };
+  res.render("sach/nhapsach", data);
 };

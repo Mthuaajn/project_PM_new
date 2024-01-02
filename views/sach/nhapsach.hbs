@@ -1,60 +1,66 @@
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QL NHÀ SÁCH</title>
     <link
-      href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
-      rel='stylesheet'
-      integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN'
-      crossorigin='anonymous'
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
     />
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css' />
-    <link rel='stylesheet' href='/css/sach/nhapsach.css' />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="/css/sach/nhapsach.css" />
   </head>
   <body>
-    <h1 id='title'>Phiếu Nhập Sách</h1>
-    <section id='book-management'>
-      <div id='section1'>
-        <table class='table table-bordered'>
+    <h1 id="title">Phiếu Nhập Sách</h1>
+    <section id="book-management">
+      <div id="section1">
+        <table class="table table-bordered">
           <thead>
             <tr>
-              <th scope='col'>Mã Sách</th>
-              <th scope='col'>Tên Sách</th>
+              <th scope="col">Mã Sách</th>
+              <th scope="col">Tên Sách</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope='row'>1</th>
-              <td>Tài ăn nói của người đàn ông</td>
-            </tr>
+            {{#each books}}
+              <tr>
+                <th scope="row">{{masach}}</th>
+                <td>{{tensach}}</td>
+              </tr>
+            {{/each}}
           </tbody>
         </table>
       </div>
-      <div id='section2'>
-        <div class='top'>
-          <div class='table-top'>
-            <table class='table align-middle table-bordered'>
+      <div id="section2">
+        <div class="top">
+          <div class="table-top">
+            <table class="table align-middle table-bordered">
               <thead>
                 <tr>
-                  <th scope='col'>Mã Sách</th>
-                  <th class='text-center' scope='col'>Tên Sách</th>
-                  <th scope='col'>Số lượng</th>
-                  <th scope='col'>Đơn giá nhập</th>
-                  <th scope='col'>Tổng tiền</th>
-                  <th scope='col'>Thực hiện</th>
+                  <th scope="col">Mã Sách</th>
+                  <th class="text-center" scope="col">Tên Sách</th>
+                  <th scope="col">Số lượng</th>
+                  <th scope="col">Đơn giá nhập</th>
+                  <th scope="col">Tổng tiền</th>
+                  <th scope="col">Thực hiện</th>
                 </tr>
               </thead>
               <tbody>
+
                 <tr>
-                  <th scope='row'>1</th>
+                  <th scope="row">1</th>
                   <td>Tài ăn nói của người đàn ông</td>
                   <td>1</td>
                   <td>2</td>
                   <td>3</td>
                   <td>
                     <button>
-                      <img src='/img/icon-bin.svg' alt='' />
+                      <img class="delete-link" src="/img/icon-bin.svg" alt="" />
                     </button>
                   </td>
                 </tr>
@@ -62,57 +68,57 @@
             </table>
 
           </div>
-          <div class='action'>
-            <input type='text' class='form-control' id='bookName' placeholder='Nhập tên sách' />
-            <input type='text' class='form-control' id='bookPrice' placeholder='Nhập giá' />
-            <button type='button' class='btn btn-primary'>Thêm Sách</button>
+          <div class="action">
+            <input type="text" class="form-control" id="bookName" placeholder="Nhập Số lượng" />
+            <input type="text" class="form-control" id="bookPrice" placeholder="Nhập giá" />
+            <button type="button" class="btn btn-primary">Thêm Sách</button>
           </div>
         </div>
-        <div class='bottom'>
-          <table class='table table-bordered'>
+        <div class="bottom">
+          <table class="table table-bordered">
             <thead>
               <tr>
-                <th scope='col'>Mã hóa đơn</th>
-                <th scope='col'>Ngày nhập</th>
-                <th scope='col'>Tổng tiền</th>
-                <th scope='col'>Thực hiện</th>
+                <th scope="col">Mã hóa đơn</th>
+                <th scope="col">Ngày nhập</th>
+                <th scope="col">Tổng tiền</th>
+                <th scope="col">Thực hiện</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope='row'>1</th>
+                <th scope="row">1</th>
                 <td>7/12/2023 12:00:00 AM</td>
                 <td>293000</td>
                 <td>
                   <button>
-                    <img src='/img/icon-bin.svg' alt='' />
+                    <img src="/img/icon-bin.svg" alt="" />
                   </button>
                 </td>
               </tr>
               <tr>
-                <th scope='row'>1</th>
+                <th scope="row">1</th>
                 <td>7/12/2023 12:00:00 AM</td>
                 <td>293000</td>
                 <td>
                   <button>
-                    <img src='/img/icon-bin.svg' alt='' />
+                    <img src="/img/icon-bin.svg" alt="" />
                   </button>
                 </td>
               </tr>
             </tbody>
           </table>
-          <div class='btn-list'>
-            <button type='button' class='btn btn-primary'>Tạo phiếu nhập mới</button>
-            <button type='button' class='btn btn-secondary'>Nhập sách</button>
-            <button type='button' class='btn btn-success'>Lưu phiếu nhập</button>
+          <div class="btn-list">
+            <button type="button" class="btn btn-primary">Tạo phiếu nhập mới</button>
+            <button type="button" class="btn btn-secondary">Nhập sách</button>
+            <button type="button" class="btn btn-success">Lưu phiếu nhập</button>
           </div>
         </div>
       </div>
     </section>
     <script
-      src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js'
-      integrity='sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL'
-      crossorigin='anonymous'
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
     ></script>
   </body>
 </html>

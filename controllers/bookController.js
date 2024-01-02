@@ -91,5 +91,29 @@ exports.renderPagebanSach = async (req, res, net) => {
   const data = {
     books,
   };
-  res.render("sach/bansach",data);
+  res.render("sach/bansach", data);
+};
+
+exports.renderPageTimKiemSach = async (req, res, next) => {
+  const books = await bookModel.find({});
+  const data = {
+    books,
+  };
+  res.render("sach/timkiemsach", data);
+};
+
+exports.timkiemSach = async (req, res, next) => {
+  let isFind = false;
+  const query = {};
+  query[req.query.field] = req.query.value;
+
+  const books = await bookModel.find(query);
+  if (books.length > 0) {
+    isFind = true;
+  }
+  const data = {
+    books,
+    isFind,
+  };
+  res.render("sach/timkiemsach", data);
 };

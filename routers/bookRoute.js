@@ -7,5 +7,6 @@ bookRoute.route("/qlsach").get(bookController.renderPageQLsach).post(bookControl
 bookRoute.route("/nhapsach").get(bookController.nhapsach);
 bookRoute.route("/bansach").get(bookController.renderPagebanSach);
 bookRoute.route("/theloai/:id").delete(bookController.deleteTheLoai);
-
+bookRoute.route("/pagetimkiem").get(bookController.renderPageTimKiemSach);
+bookRoute.route("/timkiemsach").get(bookController.timkiemSach);
 module.exports = bookRoute;

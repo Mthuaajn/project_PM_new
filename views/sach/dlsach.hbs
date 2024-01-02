@@ -35,11 +35,9 @@
                 <th scope="row">{{manxb}}</th>
                 <td>{{tennxb}}</td>
                 <td>
-                  <form action="theloai/{{_id}}" method="POST">
-                    <button type="submit">
-                      <img src="/img/icon-bin.svg" alt="" />
-                    </button>
-                  </form>
+                  <a href="nxb/{{_id}}" class="delete-link">
+                    <img src="/img/icon-bin.svg" alt="" />
+                  </a>
                 </td>
               </tr>
             {{/each}}
@@ -62,11 +60,9 @@
                 <th scope="row">{{matheloai}}</th>
                 <td>{{tentheloai}}</td>
                 <td>
-                  <form action="theloai/{{_id}}" method="POST">
-                    <button type="submit">
-                      <img src="/img/icon-bin.svg" alt="" />
-                    </button>
-                  </form>
+                  <a href="theloai/{{_id}}" class="delete-link">
+                    <img src="/img/icon-bin.svg" alt="" />
+                  </a>
                 </td>
               </tr>
             {{/each}}
@@ -83,8 +79,3 @@
 </html>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-  $(document).ready(function() { $('form').on('submit', function(e) { e.preventDefault(); var
-  actionUrl = e.currentTarget.action; $.ajax({ url: actionUrl, type: 'DELETE', success:
-  function(result) { alert('Xóa thành công'); location.reload(); } }); }); });
-</script>

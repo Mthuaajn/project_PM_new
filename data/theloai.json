@@ -18,5 +18,25 @@
   {
     "matheloai": "TL005",
     "tentheloai": "Sách dạy nấu ăn và ẩm thực"
+  },
+  {
+    "matheloai": "TL006",
+    "tentheloai": "Văn học - Tiểu thuyết"
+  },
+  {
+    "matheloai": "TL007",
+    "tentheloai": "Kinh doanh - Quản trị"
+  },
+  {
+    "matheloai": "TL008",
+    "tentheloai": "Tôn giáo - Tâm linh"
+  },
+  {
+    "matheloai": "TL009",
+    "tentheloai": "Y học - Sức khỏe"
+  },
+  {
+    "matheloai": "TL010",
+    "tentheloai": "Lịch sử - Chính trị"
   }
 ]

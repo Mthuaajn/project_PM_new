@@ -42,11 +42,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // routers
 
 app.use("/sach", bookRouter);
-app.use("/qlsach", qlsach);
-app.use("/dlsach", dlsach);
-app.use("/nhapsach", nhapsach);
-app.use("/bansach", bansach);
-app.use("/timkiemsach", timkiemsach);
+
 app.use("/khachhangs", khachHangRouter);
 app.use("/thutien", thutien);
 app.use("/timkiemkhachhang", timkiemkhachhang);

@@ -1,0 +1,42 @@
+[
+  {
+    "masach": "MS001",
+    "tensach": "Sách A",
+    "theloai": "Thể loại A",
+    "tacgia": "Tác giả A",
+    "nhaxuatban": "Nhà xuất bản A",
+    "dongia": 10000
+  },
+  {
+    "masach": "MS002",
+    "tensach": "Sách B",
+    "theloai": "Thể loại B",
+    "tacgia": "Tác giả B",
+    "nhaxuatban": "Nhà xuất bản B",
+    "dongia": 15000
+  },
+  {
+    "masach": "MS003",
+    "tensach": "Sách C",
+    "theloai": "Thể loại C",
+    "tacgia": "Tác giả C",
+    "nhaxuatban": "Nhà xuất bản C",
+    "dongia": 12000
+  },
+  {
+    "masach": "MS004",
+    "tensach": "Sách D",
+    "theloai": "Thể loại D",
+    "tacgia": "Tác giả D",
+    "nhaxuatban": "Nhà xuất bản D",
+    "dongia": 18000
+  },
+  {
+    "masach": "MS005",
+    "tensach": "Sách E",
+    "theloai": "Thể loại E",
+    "tacgia": "Tác giả E",
+    "nhaxuatban": "Nhà xuất bản E",
+    "dongia": 13000
+  }
+]

@@ -18,7 +18,7 @@
   <body>
     <h1 id="title">Quản lý thông tin sách</h1>
     <section id="book-management">
-      <form action="/qlsach" id="book-form">
+      <form action="/sach/qlsach" id="book-form" method="post">
         <div id="main-form">
           <div id="left">
             <div class="mb-3 form-item">
@@ -57,9 +57,9 @@
               <label for="bookCate" class="form-label">Thể loại</label>
               <select id="bookCate" class="form-select" name="bookCate" aria-label="Chọn thể loại">
                 <option selected>Chọn thể loại</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                {{#each theloais}}
+                  <option value="{{tentheloai}}">{{tentheloai}}</option>
+                {{/each}}
               </select>
             </div>
             <div class="mb-3 form-item">
@@ -71,9 +71,9 @@
                 aria-label="Nhà xuất bản"
               >
                 <option selected>Chọn nhà xuất bản</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                {{#each nxbs}}
+                  <option value="{{tennxb}}">{{tennxb}}</option>
+                {{/each}}
               </select>
             </div>
             <div class="mb-3 form-item">
@@ -108,32 +108,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Kim Dong</td>
-              <td>Anime</td>
-              <td>
-                <button>
-                  <img src="/img/icon-bin.svg" alt="" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Kim Dong</td>
-              <td>Anime</td>
-              <td>
-                <button>
-                  <img src="/img/icon-bin.svg" alt="" />
-                </button>
-              </td>
-            </tr>
+            {{#each books}}
+              <tr>
+                <th scope="row">{{masach}}</th>
+                <td>{{tensach}}</td>
+                <td>{{tacgia}}</td>
+                <td>{{dongia}}</td>
+                <td>{{nhaxuatban}}</td>
+                <td>{{theloai}}</td>
+                <td>
+                  <a href="theloai/{{_id}}" class="delete-link">
+                    <img src="/img/icon-bin.svg" alt="" />
+                  </a>
+                </td>
+              </tr>
+            {{/each}}
           </tbody>
         </table>
       </div>

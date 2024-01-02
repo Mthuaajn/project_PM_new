@@ -4,6 +4,7 @@ dotenv.config({ path: "./config.env" });
 const mongoose = require("mongoose");
 const nxbModel = require("./../models/nxbModel");
 const theloaiModel = require("./../models/theloaiModel");
+const bookModel = require("./../models/bookModel");
 const DB = process.env.DATABASE.replace("<PASSWORD>", process.env.DATABASE_PASSWORD);
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -21,9 +22,12 @@ mongoose
 //   read file json
 const nxb = JSON.parse(fs.readFileSync(`${__dirname}/nxb.json`, "utf-8"));
 const theloai = JSON.parse(fs.readFileSync(`${__dirname}/theloai.json`, "utf-8"));
+const books = JSON.parse(fs.readFileSync(`${__dirname}/book.json`, "utf-8"));
+
 // Import data into database
 const importData = async () => {
   try {
+    await bookModel.create(books);
     await nxbModel.create(nxb);
     await theloaiModel.create(theloai);
     console.log("data successfully loaded");
@@ -38,6 +42,7 @@ const deleteData = async () => {
   try {
     await nxbModel.deleteMany({});
     await theloaiModel.deleteMany({});
+    await bookModel.deleteMany({});
     console.log("data successfully deleted");
   } catch (err) {
     console.log(err.message);

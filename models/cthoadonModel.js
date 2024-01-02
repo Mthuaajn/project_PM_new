@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-const chphieunhapSchema = new mongoose.Schema({
+const ctHoaDonSchema = new mongoose.Schema({
   book: {
     type: mongoose.Schema.ObjectId,
     ref: "Book",
     required: true,
   },
-  maPhieuNhap: {
+  maHoaDon: {
     type: Number,
     required: true,
   },
@@ -24,9 +24,9 @@ const chphieunhapSchema = new mongoose.Schema({
   },
 });
 
-chphieunhapSchema.pre("find", function () {
+ctHoaDonSchema.pre("find", function () {
   this.populate("book");
 });
 
-const chphieunhapModel = mongoose.model("chphieunhap", chphieunhapSchema);
-module.exports = chphieunhapModel;
+const ctHoaDonModel = mongoose.model("ctHoaDon", ctHoaDonSchema);
+module.exports = ctHoaDonModel;

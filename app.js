@@ -8,11 +8,6 @@ const app = express();
 
 const bookRouter = require("./routers/bookRoute");
 const khachHangRouter = require("./routers/khachhang");
-const qlsach = require("./routers/qlsach");
-const dlsach = require("./routers/dlsach");
-const nhapsach = require("./routers/nhapsach");
-const bansach = require("./routers/bansach");
-const timkiemsach = require("./routers/timkiemsach");
 const thutien = require("./routers/thutien");
 const timkiemkhachhang = require("./routers/timkiemkhachhang");
 

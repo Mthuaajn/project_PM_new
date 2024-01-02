@@ -27,10 +27,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Tài ăn nói của người đàn ông</td>
-            </tr>
+            {{#each books}}
+              <tr>
+                <th scope="row">{{masach}}</th>
+                <td>{{tensach}}</td>
+              </tr>
+            {{/each}}
+
           </tbody>
         </table>
       </div>
@@ -40,7 +43,7 @@
             <table class="table table-bordered align-middle">
               <thead>
                 <tr>
-                  <th scope="col">Mã hóa đơn</th>
+                  <th scope="col">Mã CT hóa đơn</th>
                   <th class="text-center" scope="col">Tên Sách</th>
                   <th scope="col">Số lượng</th>
                   <th scope="col">Đơn giá nhập</th>
@@ -49,31 +52,28 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Tài ăn nói của người đàn ông</td>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>
-                    <button>
-                      <img src="/img/icon-bin.svg" alt="" />
-                    </button>
-                  </td>
-                </tr>
+                {{#each ctHoaDons}}
+                  <tr>
+                    <th scope="row">{{maHoaDon}}</th>
+                    <td>{{book.tensach}}</td>
+                    <td>{{soLuong}}</td>
+                    <td>{{donGia}}</td>
+                    <td>{{tongTien}}</td>
+                    <td>
+                      <button>
+                        <img src="/img/icon-bin.svg" alt="" />
+                      </button>
+                    </td>
+                  </tr>
+                {{/each}}
               </tbody>
             </table>
 
           </div>
           <div class="action">
-            <form action="#" method="post">
+            <form action="/sach/hoadon/taosach" method="post">
               <div class="action">
-                <select
-                  id="bookPublisher"
-                  class="form-select"
-                  name="bookPublisher"
-                  aria-label="Sách"
-                >
+                <select id="bookName" class="form-select" name="bookName" aria-label="Sách">
                   <option selected>Chọn Sách</option>
                   {{#each books}}
                     <option value="{{tensach}}">{{tensach}}</option>
@@ -82,8 +82,8 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="bookName"
-                  name="bookName"
+                  id="bookQuantity"
+                  name="bookQuantity"
                   placeholder="Nhập số lượng"
                 />
                 <input
@@ -110,41 +110,36 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>0000</td>
-                <td>7/12/2023 12:00:00 AM</td>
-                <td>293000</td>
-                <td>
-                  <button>
-                    <img src="/img/icon-bin.svg" alt="" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>0000</td>
-                <td>7/12/2023 12:00:00 AM</td>
-                <td>293000</td>
-                <td>
-                  <button>
-                    <img src="/img/icon-bin.svg" alt="" />
-                  </button>
-                </td>
-              </tr>
+              {{#each hoaDons}}
+                <tr>
+                  <th scope="row">{{maHD}}</th>
+                  <td>{{makh.maKhachHang}}</td>
+                  <td>{{ngaynhap}}</td>
+                  <td>{{this.tongTien}}</td>
+                  <td>
+                    <button>
+                      <img src="/img/icon-bin.svg" alt="" />
+                    </button>
+                  </td>
+                </tr>
+              {{/each}}
             </tbody>
           </table>
-          <div class="btn-list">
-            <select id="bookCate" class="form-select" aria-label="Chọn thể loại">
-              <option selected>Chọn khách hàng</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+          <form class="btn-list" action="/sach/hoadon/taohoadon" method="POST">
+            <select
+              id="maKhachHang"
+              name="maKhachHang"
+              class="form-select"
+              aria-label="Chọn thể loại"
+            >
+              {{#each khachHangs}}
+                <option value="{{maKhachHang}}">{{maKhachHang}}</option>
+              {{/each}}
             </select>
             <button type="button" class="btn btn-primary">Tạo hóa đơn mới</button>
             <button type="button" class="btn btn-secondary">Nhập hóa đơn</button>
-            <button type="button" class="btn btn-success">Lưu hóa đơn</button>
-          </div>
+            <button type="submit" class="btn btn-success">Lưu hóa đơn</button>
+          </form>
         </div>
       </div>
     </section>

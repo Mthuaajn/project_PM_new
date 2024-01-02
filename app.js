@@ -10,6 +10,9 @@ const bookRouter = require("./routers/bookRoute");
 const khachHangRouter = require("./routers/khachhang");
 const thutien = require("./routers/thutien");
 const timkiemkhachhang = require("./routers/timkiemkhachhang");
+const ton = require("./routers/ton");
+const nocong = require("./routers/nocong");
+const quydinh = require("./routers/quydinh");
 
 const userRouter = require("./routers/userRouter");
 if (process.env.NODE_ENV === "development") {
@@ -40,12 +43,18 @@ app.use("/sach", bookRouter);
 app.use("/khachhangs", khachHangRouter);
 app.use("/thutien", thutien);
 app.use("/timkiemkhachhang", timkiemkhachhang);
+//<<<<<<< HEAD
 
 // app.use("/", userRouter);
 // app.get("/home", (req, res) => {
 //   res.render("home");
 // });
 
+//=======
+app.use("/ton", ton);
+app.use("/nocong", nocong);
+app.use("/quydinh", quydinh);
+//>>>>>>> 7b9d1f6 (ADD LAYOUT)
 app.get("/", (req, res) => {
   res.render("home");
 });

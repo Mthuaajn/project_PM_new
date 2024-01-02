@@ -1,105 +1,88 @@
-<html lang='en'>
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>QL Nhà sách</title>
-    <link
-      href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
-      rel='stylesheet'
-      integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN'
-      crossorigin='anonymous'
-    />
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css' />
-    <link rel='stylesheet' href='/css/sach/qlsach.css' />
-  </head>
-  <body>
-    <h1 id='title'>Quản lý khách hàng</h1>
-    <section id='book-management'>
-      <div id='book-form'>
-        <div id='main-form'>
-          <div id='left'>
-            <div class='mb-3 form-item'>
-              <label for='bookId' class='form-label'>Mã khách hàng</label>
-              <input type='text' class='form-control' id='customerId' placeholder='Nhập mã khách hàng' />
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>QL Nhà sách</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+        <link rel="stylesheet" href="/css/khach_hang/qlkhachhang.css" />
+    </head>
+    <body>
+        <h1 id="title">Quản lý khách hàng</h1>
+        <section id="book-management">
+            <input type="text" style="display: none;" id="customerIdToSend">
+            <div id="book-form">
+                <div id="main-form">
+                    <div id="left">
+                        <div class="mb-3 form-item">
+                            <label for="bookId" class="form-label">Mã khách hàng</label>
+                            <input type="text" class="form-control" id="customerId" placeholder="Nhập mã khách hàng" />
+                        </div>
+                        <div class="mb-3 form-item">
+                            <label for="bookName" class="form-label">Tên khách hàng</label>
+                            <input type="text" class="form-control" id="customerName" placeholder="Nhập tên khách hàng" />
+                        </div>
+                        <div class="mb-3 form-item">
+                            <label for="bookAuthor" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="customerAddress" placeholder="Nhập địa chỉ" />
+                        </div>
+                    </div>
+                    <div id="right">
+                        <div class="mb-3 form-item">
+                            <label for="bookId" class="form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" id="customerPhone" placeholder="Nhập số điện thoại" />
+                        </div>
+                        <div class="mb-3 form-item">
+                            <label for="bookName" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="customerEmail" placeholder="Nhập email" />
+                        </div>
+                        <div class="mb-3 form-item">
+                            <label for="bookAuthor" class="form-label">Tiền nợ</label>
+                            <input type="text" class="form-control" id="customerLoan" placeholder="Số tiền nợ" />
+                        </div>
+                    </div>
+                </div>
+                <div id="btn-list">
+                    <button type="button" class="btn btn-primary" id="btnThemKhachHang">Thêm khách hàng</button>
+                    <button type="button" class="btn btn-secondary" id="btnCapNhatKhachHang">Cập nhật khách hàng</button>
+                </div>
             </div>
-            <div class='mb-3 form-item'>
-              <label for='bookName' class='form-label'>Tên khách hàng</label>
-              <input type='text' class='form-control' id='customerName' placeholder='Nhập tên khách hàng' />
+            <div id="error-message" class="alert alert-danger" style="display: none;"></div>
+            <div id="khachhang-list">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mã</th>
+                            <th scope="col">Tên Khách hàng</th>
+                            <th scope="col">Địa chỉ</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Số điện thoại</th>
+                            <th scope="col">Tiền nợ</th>
+                            <th scope="col">Thực hiện</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customer-list">
+                        {{#each khachHangs}}
+                            <tr>
+                                <th scope="row">{{maKhachHang}}</th>
+                                <td>{{hoTen}}</td>
+                                <td>{{diaChi}}</td>
+                                <td>{{email}}</td>
+                                <td>{{dienThoai}}</td>
+                                <td>{{tienNo}}</td>
+                                <td style="display:none;">{{_id}}</td>
+                                <td>
+                                    <button class="delete-button" data-customer-id="{{_id}}">
+                                        <img src="/img/icon-bin.svg" alt="" />
+                                    </button>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
-            <div class='mb-3 form-item'>
-              <label for='bookAuthor' class='form-label'>Tác Giả</label>
-              <input type='text' class='form-control' id='customerAddress' placeholder='Nhập địa chỉ' />
-            </div>
-          </div>
-          <div id='right'>
-             <div class='mb-3 form-item'>
-              <label for='bookId' class='form-label'>Số điện thoại</label>
-              <input type='text' class='form-control' id='customerPhone' placeholder='Nhập số điện thoại' />
-            </div>
-            <div class='mb-3 form-item'>
-              <label for='bookName' class='form-label'>Email</label>
-              <input type='text' class='form-control' id='customerEmail' placeholder='Nhập email' />
-            </div>
-            <div class='mb-3 form-item'>
-              <label for='bookAuthor' class='form-label'>Tiền nợ</label>
-              <input type='text' class='form-control' id='customerLoan' placeholder='Số tiền nợ' />
-            </div>
-          </div>
-        </div>
-        <div id='btn-list'>
-          <button type='button' class='btn btn-primary'>Thêm khách hàng</button>
-          <button type='button' class='btn btn-secondary'>Lưu khách hàng</button>
-          <button type='button' class='btn btn-success'>Cập nhật khách hàng</button>
-        </div>
-      </div>
-       <div id='book-list'>
-        <table class='table table-bordered'>
-          <thead>
-            <tr>
-              <th scope='col'>Mã</th>
-              <th scope='col'>Tên Khách hàng</th>
-              <th scope='col'>Địa chỉ</th>
-              <th scope='col'>Email</th>
-              <th scope='col'>Số điện thoại</th>
-              <th scope='col'>Tiền nợ</th>
-              <th scope='col'>Thực hiện</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope='row'>1</th>
-              <td>Nguyễn Minh Thuận</td>
-              <td>nmt@gmail.com</td>
-              <td>An Giang</td>
-              <td>0123456789</td>
-              <td>0</td>
-              <td>
-                <button>
-                  <img src='/img/icon-bin.svg' alt='' />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope='row'>2</th>
-              <td>Nguyễn Hữu Thương</td>
-              <td>nht@gmail.com</td>
-              <td>Lâm Đồng</td>
-              <td>1234567881</td>
-              <td>10000</td>
-              <td>
-                <button>
-                  <img src='/img/icon-bin.svg' alt='' />
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-    <script
-      src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js'
-      integrity='sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL'
-      crossorigin='anonymous'
-    ></script>
-  </body>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="./js/khachhang.js"></script>
+    </body>
 </html>

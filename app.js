@@ -8,7 +8,6 @@ const app = express();
 
 const bookRouter = require("./routers/bookRoute");
 const khachHangRouter = require("./routers/khachhang");
-const thutien = require("./routers/thutien");
 const timkiemkhachhang = require("./routers/timkiemkhachhang");
 const ton = require("./routers/ton");
 const nocong = require("./routers/nocong");
@@ -41,7 +40,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // routers
 app.use("/sach", bookRouter);
 app.use("/khachhangs", khachHangRouter);
-app.use("/thutien", thutien);
 app.use("/timkiemkhachhang", timkiemkhachhang);
 //<<<<<<< HEAD
 

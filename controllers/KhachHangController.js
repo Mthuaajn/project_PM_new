@@ -1,4 +1,5 @@
 const KhachHang = require("../models/khachHangModel.js");
+const PhieuThu = require("../models/phieuThuModel.js");
 
 const renderKhachHangs = async (req, res) => {
     try {
@@ -146,6 +147,61 @@ const deleteKhachHang = async (req, res, next) => {
     return res.json({ messages, khachHangs: KhachHangs });
 };
 
+const thuTienGet = async (req, res, next) => {
+    const KhachHangs = await KhachHang.find().lean();
+    const PhieuThus = await PhieuThu.find().lean();
+    console.log(PhieuThus)
+    res.render("khach_hang/thutien", {
+        khachHangs: KhachHangs,
+        phieuThus: PhieuThus,
+        messages: []
+    });
+}
+
+const thuTienPost = async (req, res, next) => {
+    const { maKhachHang, maPhieuThu, customerLoan, soTienThu } = req.body;
+    const successMessages = []
+    const errorMessages = [];
+    const phieuThu = await PhieuThu.findOne({ maPhieuThu: maPhieuThu })
+    const khachHang = await KhachHang.findById(maKhachHang);
+
+    if (phieuThu) {
+        errorMessages.push({
+            message: "Mã phiếu thu đã tồn tại, vui lòng nhập lại"
+        })
+    }
+    if (errorMessages.length === 0) {
+        const newSoTien = soTienThu - customerLoan;
+        await KhachHang.findByIdAndUpdate({ _id: maKhachHang }, {
+            tienNo: newSoTien
+        })
+
+        const data = {
+            maPhieuThu: maPhieuThu,
+            soTienThu: soTienThu,
+            khachHang: maKhachHang,
+
+        }
+
+        const phieuThu = new PhieuThu(data);
+        await phieuThu.save();
+        successMessages.push({
+            message: 'Tạo mới phiếu thu thành công'
+        })
+    }
+
+
+    const messages = [...errorMessages, ...successMessages]
+
+    return res.json({ messages })
+}
+
+const getOne = async (req, res, next) => {
+    const { id } = req.params;
+    const khachHang = await KhachHang.findOne({ _id: id });
+    return res.json(khachHang)
+}
+
 module.exports = {
     renderKhachHangs,
     renderTimKiemKhachHangs,
@@ -153,4 +209,5 @@ module.exports = {
     renderKhachHangEdit,
     editKhachHang,
     deleteKhachHang,
+    thuTienGet, thuTienPost, getOne
 };

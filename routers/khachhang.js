@@ -5,6 +5,9 @@ const {
     renderTimKiemKhachHangs,
     renderKhachHangEdit,
     editKhachHang,
+    thuTienGet,
+    thuTienPost,
+    getOne
   } = require("../controllers/KhachHangController");
   
 const express = require('express');
@@ -15,7 +18,13 @@ router.get("/", renderKhachHangs);
 
 router.get("/search", renderTimKiemKhachHangs);
 
+router.get("/thutien", thuTienGet);
+
+router.post("/thutien", thuTienPost);
+
 router.post("/add", createKhachHang);
+
+router.get("/:id", getOne);
 
 router.get("/:id/edit", renderKhachHangEdit);
 

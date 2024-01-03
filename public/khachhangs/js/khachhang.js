@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         // Append the row to the tbody
                         customerList.appendChild(row);
+                        loadDeleteButton()
                     });
                 });
             });
@@ -170,9 +171,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Append the row to the tbody
                     customerList.appendChild(row);
+                    loadDeleteButton()
                 });
             })
-        loadDeleteButton()
 
     });
     // CAP NHAT THONG TIN KHACH HANG END
@@ -241,8 +242,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Append the row to the tbody
                 customerList.appendChild(row);
+                loadDeleteButton()
             });
         })
-        loadDeleteButton()
     });
 });

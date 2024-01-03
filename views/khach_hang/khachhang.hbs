@@ -41,7 +41,7 @@
                     </div>
                     <div class="mb-3 form-item">
                         <label for="bookAuthor" class="form-label">Tiền nợ</label>
-                        <input type="text" class="form-control" id="customerLoan" placeholder="Số tiền nợ" />
+                        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" id="customerLoan" placeholder="Số tiền nợ" />
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Số điện thoại</th>
                         <th scope="col">Tiền nợ</th>
-                        <th scope="col">Thực hiện</th>
+                        <th scope="col">Xóa</th>
                     </tr>
                 </thead>
                 <tbody id="customer-list">
@@ -74,9 +74,9 @@
                         <td>{{dienThoai}}</td>
                         <td>{{tienNo}}</td>
                         <td style="display:none;">{{_id}}</td>
-                        <td>
-                            <button class="delete-button" data-customer-id="{{_id}}">
-                                <img src="/img/icon-bin.svg" alt="" />
+                        <td id="delete">
+                            <button id="delete" class="delete-button" data-customer-id="{{_id}}">
+                                <img id="delete" src="/img/icon-bin.svg" alt="" />
                             </button>
                         </td>
                     </tr>

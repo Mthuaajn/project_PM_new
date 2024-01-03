@@ -67,7 +67,7 @@ const createKhachHang = async (req, res, next) => {
 
         const messages = [...errorMessages, ...successMessages]
 
-        return res.json({ messages });
+        return res.json({ messages, khachHangs: KhachHangs });
     } catch (error) {
         console.log({ error });
         return res.render("error", { errorMessage: error.message });
@@ -80,15 +80,70 @@ const renderKhachHangEdit = async (req, res, next) => {
 };
 
 const editKhachHang = async (req, res, next) => {
-    const { id } = req.params;
-    await KhachHang.updateOne({ _id: id }, req.body);
-    res.redirect("/");
+    const errorMessages = []
+    const successMessages = []
+
+    const { maKhachHang, hoTen, diaChi, dienThoai, email, tienNo } = req.body;
+
+    if (!maKhachHang || !hoTen || !diaChi || !dienThoai || !email || !tienNo) {
+        errorMessages.push({
+            message: "Vui lòng điền đầy đủ thông tin khách hàng."
+        })
+    }
+    if (dienThoai?.length !== 10 || !/^\d+$/.test(dienThoai)) { // regular expression kiem tra so dien thoai
+        errorMessages.push({
+            message: "Số điện thoại phải chứa đúng 10 số và chỉ chấp nhận ký tự số."
+        })
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) { // regular expression kiem tra email
+        errorMessages.push({
+            message: "Định dạng email không đúng."
+        })
+    }
+    if (errorMessages.length === 0) {
+        const { id } = req.params;
+        await KhachHang.updateOne({ _id: id }, req.body);
+        successMessages.push({
+            message: "Cập nhật khách hàng thành công"
+        })
+    }
+    const KhachHangs = await KhachHang.find().lean();
+
+
+    const messages = [...errorMessages, ...successMessages]
+
+    return res.json({ messages, khachHangs: KhachHangs });
 };
 
 const deleteKhachHang = async (req, res, next) => {
-    let { id } = req.params;
-    await KhachHang.remove({ _id: id });
-    res.redirect("/");
+    const { id } = req.params;
+    const errorMessages = []
+    const successMessages = []
+
+    const khachHang = await KhachHang.findById(id);
+
+    if (khachHang) {
+        const tienNo = khachHang.tienNo;
+        if (tienNo > 0) {
+            errorMessages.push({
+                message: "Vui lòng thanh toán nợ trước khi xóa."
+            })
+        }
+
+    }
+
+    if (errorMessages.length === 0) {
+        await KhachHang.remove({ _id: id });
+        successMessages.push({
+            message: "Xóa khách hàng thành công"
+        })
+    }
+    const KhachHangs = await KhachHang.find().lean();
+
+    const messages = [...errorMessages, ...successMessages]
+
+    return res.json({ messages, khachHangs: KhachHangs });
 };
 
 module.exports = {

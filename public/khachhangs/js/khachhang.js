@@ -1,4 +1,57 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    function loadDeleteButton() {
+        const deleteButtons = document.querySelectorAll(".delete-button");
+        deleteButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                const customerId = this.getAttribute("data-customer-id");
+
+                // Gửi request DELETE thông qua fetch
+                fetch(`/khachhangs/${customerId}/delete`, {
+                    method: "get",
+                }).then((response) => response.json()).then((json) => {
+                    if (json.messages?.length > 0) {
+                        while (errorMessageContainer.firstChild) {
+                            errorMessageContainer.firstChild.remove()
+                        }
+                        json.messages.forEach((error) => {
+                            const messageElement = document.createElement('div');
+                            messageElement.className = 'alert alert-danger';
+                            messageElement.innerHTML = `<p>${error.message}</p>`;
+                            errorMessageContainer.appendChild(messageElement);
+                        })
+                    }
+                    customerList.innerHTML = ''
+                    // Iterate through the updated khachHangs data and append rows to the table
+                    json.khachHangs.forEach(khachHang => {
+                        const row = document.createElement('tr');
+
+                        // Add the relevant data to each cell in the row
+                        row.innerHTML = `
+               <th scope="row">${khachHang.maKhachHang}</th>
+               <td>${khachHang.hoTen}</td>
+               <td>${khachHang.diaChi}</td>
+               <td>${khachHang.email}</td>
+               <td>${khachHang.dienThoai}</td>
+               <td>${khachHang.tienNo}</td>
+               <td style="display:none;">${khachHang._id}</td>
+               <td>
+                   <button class="delete-button" data-customer-id="${khachHang._id}">
+                       <img src="/img/icon-bin.svg" alt="" />
+                   </button>
+               </td>
+           `;
+
+                        // Append the row to the tbody
+                        customerList.appendChild(row);
+                    });
+                });
+            });
+        });
+
+    }
+
+    const errorMessageContainer = document.getElementById("error-container");
     // CAP NHAT THONG TIN KHACH HANG START
     const customerList = document.getElementById('customer-list');
     const customerIdToSend = document.getElementById('customerIdToSend');
@@ -9,11 +62,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const customerEmailInput = document.getElementById('customerEmail');
     const customerLoanInput = document.getElementById('customerLoan');
     const btnCapNhatKhachHang = document.getElementById('btnCapNhatKhachHang');
-
+    loadDeleteButton()
     customerList.addEventListener('click', function (event) {
         const target = event.target;
-        if (target.classList.contains('delete-button')) {
-            // Nếu click vào nút xóa, không thực hiện việc lấy thông tin
+
+        console.log('delete' === (target.id))
+        if ('delete' === (target.id)) {
             return;
         }
 
@@ -41,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         customerLoanInput.value = tienNo;
 
         // Hiển thị nút "Cập nhật khách hàng"
+        customerIdInput.setAttribute('disabled', 'true');
         btnCapNhatKhachHang.style.display = 'block';
     });
 
@@ -78,25 +133,52 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify(khachHang),
         })
-            .then(response => window.location.reload())
+            .then((data) => data.json()).then((json) => {
+                if (json.messages?.length > 0) {
+                    while (errorMessageContainer.firstChild) {
+                        errorMessageContainer.firstChild.remove()
+                    }
+                    json.messages.forEach((error) => {
+                        const messageElement = document.createElement('div');
+                        messageElement.className = 'alert alert-danger';
+                        messageElement.innerHTML = `<p>${error.message}</p>`;
+                        errorMessageContainer.appendChild(messageElement);
+                    })
+                }
+                // Clear existing content in the tbody
+                customerList.innerHTML = '';
+
+                // Iterate through the updated khachHangs data and append rows to the table
+                json.khachHangs.forEach(khachHang => {
+                    const row = document.createElement('tr');
+
+                    // Add the relevant data to each cell in the row
+                    row.innerHTML = `
+           <th scope="row">${khachHang.maKhachHang}</th>
+           <td>${khachHang.hoTen}</td>
+           <td>${khachHang.diaChi}</td>
+           <td>${khachHang.email}</td>
+           <td>${khachHang.dienThoai}</td>
+           <td>${khachHang.tienNo}</td>
+           <td style="display:none;">${khachHang._id}</td>
+           <td id="delete">
+               <button id="delete" class="delete-button" data-customer-id="${khachHang._id}">
+                   <img id="delete" src="/img/icon-bin.svg" alt="" />
+               </button>
+           </td>
+       `;
+
+                    // Append the row to the tbody
+                    customerList.appendChild(row);
+                });
+            })
+        loadDeleteButton()
 
     });
     // CAP NHAT THONG TIN KHACH HANG END
 
     // Xử lý sự kiện xóa khách hàng
-    const deleteButtons = document.querySelectorAll(".delete-button");
-    deleteButtons.forEach((button) => {
-        button.addEventListener("click", function () {
-            const customerId = this.getAttribute("data-customer-id");
-
-            // Gửi request DELETE thông qua fetch
-            fetch(`/khachhangs/${customerId}/delete`, {
-                method: "get",
-            }).then((response) => window.location.reload());
-        });
-    });
     const addButton = document.getElementById("btnThemKhachHang");
-    const errorMessageContainer = document.getElementById("error-container");
 
     addButton.addEventListener("click", function () {
         // Lấy giá trị từ các input
@@ -137,6 +219,30 @@ document.addEventListener("DOMContentLoaded", function () {
                     errorMessageContainer.appendChild(messageElement);
                 })
             }
+            // Iterate through the updated khachHangs data and append rows to the table
+            json.khachHangs.forEach(khachHang => {
+                const row = document.createElement('tr');
+
+                // Add the relevant data to each cell in the row
+                row.innerHTML = `
+       <th scope="row">${khachHang.maKhachHang}</th>
+       <td>${khachHang.hoTen}</td>
+       <td>${khachHang.diaChi}</td>
+       <td>${khachHang.email}</td>
+       <td>${khachHang.dienThoai}</td>
+       <td>${khachHang.tienNo}</td>
+       <td style="display:none;">${khachHang._id}</td>
+       <td>
+           <button class="delete-button" data-customer-id="${khachHang._id}">
+               <img src="/img/icon-bin.svg" alt="" />
+           </button>
+       </td>
+   `;
+
+                // Append the row to the tbody
+                customerList.appendChild(row);
+            });
         })
+        loadDeleteButton()
     });
 });

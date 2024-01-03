@@ -15,9 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Xử lý sự kiện khi nhập vào ô tìm kiếm
     searchInput.addEventListener('input', function () {
         const searchTerm = searchInput.value.toLowerCase();
-
         // Lọc và hiển thị chỉ những hàng chứa thông tin tìm kiếm
-        filterCustomerList(searchTerm);
+        filterCustomerList(searchTerm.trim());
     });
 
     function filterCustomerList(searchTerm) {

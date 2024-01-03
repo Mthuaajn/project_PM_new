@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
     const addButton = document.getElementById("btnThemKhachHang");
-    const errorMessage = document.getElementById("error-message");
+    const errorMessageContainer = document.getElementById("error-container");
 
     addButton.addEventListener("click", function () {
         // Lấy giá trị từ các input
@@ -107,14 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById("customerEmail").value;
         const tienNo = document.getElementById("customerLoan").value;
 
-        // Kiểm tra trường input có trống không
-        if (!maKhachHang || !hoTen || !diaChi || !dienThoai || !email || !tienNo) {
-            errorMessage.textContent = "Vui lòng điền đầy đủ thông tin khách hàng.";
-            errorMessage.style.display = "block";
-            return;
-        } else {
-            errorMessage.style.display = "none";
-        }
 
         // Tạo đối tượng chứa dữ liệu khách hàng
         const khachHang = {
@@ -133,6 +125,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(khachHang),
-        }).then((response) => window.location.reload());
+        }).then((data) => data.json()).then((json) => {
+            if (json.messages?.length > 0) {
+                while (errorMessageContainer.firstChild) {
+                    errorMessageContainer.firstChild.remove()
+                }
+                json.messages.forEach((error) => {
+                    const messageElement = document.createElement('div');
+                    messageElement.className = 'alert alert-danger';
+                    messageElement.innerHTML = `<p>${error.message}</p>`;
+                    errorMessageContainer.appendChild(messageElement);
+                })
+            }
+        })
     });
 });

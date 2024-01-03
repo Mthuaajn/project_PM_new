@@ -59,9 +59,9 @@
                     <td>{{donGia}}</td>
                     <td>{{tongTien}}</td>
                     <td>
-                      <button>
+                      <a href="ctphieunhap/{{_id}}">
                         <img class="delete-link" src="/img/icon-bin.svg" alt="" />
-                      </button>
+                      </a>
                     </td>
                   </tr>
                 {{/each}}
@@ -112,17 +112,15 @@
                   <td>{{ngaynhap}}</td>
                   <td>{{this.tongTien}}</td>
                   <td>
-                    <button>
+                    <a href="phieunhap/{{_id}}">
                       <img src="/img/icon-bin.svg" alt="" />
-                    </button>
+                    </a>
                   </td>
                 </tr>
               {{/each}}
             </tbody>
           </table>
           <div class="btn-list">
-            <button type="button" class="btn btn-primary">Tạo phiếu nhập mới</button>
-            <button type="button" class="btn btn-secondary">Nhập sách</button>
             <form action="/sach/phieunhap/taophieunhap" method="POST">
               <button type="submit" class="btn btn-success">Lưu phiếu nhập</button>
             </form>

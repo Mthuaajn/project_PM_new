@@ -22,5 +22,5 @@ mongoose
 
 // Start sever
 const server = app.listen(port, () => {
-  console.log(`app running on port = ${port}`);
+  console.log(`truy cập đường link sau để vào trang web http://localhost:${port}`);
 });

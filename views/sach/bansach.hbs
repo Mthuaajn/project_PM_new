@@ -60,9 +60,9 @@
                     <td>{{donGia}}</td>
                     <td>{{tongTien}}</td>
                     <td>
-                      <button>
+                      <a href="cthoadon/{{_id}}">
                         <img src="/img/icon-bin.svg" alt="" />
-                      </button>
+                      </a>
                     </td>
                   </tr>
                 {{/each}}
@@ -117,9 +117,9 @@
                   <td>{{ngaynhap}}</td>
                   <td>{{this.tongTien}}</td>
                   <td>
-                    <button>
+                    <a href="hoadon/{{_id}}">
                       <img src="/img/icon-bin.svg" alt="" />
-                    </button>
+                    </a>
                   </td>
                 </tr>
               {{/each}}
@@ -136,8 +136,6 @@
                 <option value="{{maKhachHang}}">{{maKhachHang}}</option>
               {{/each}}
             </select>
-            <button type="button" class="btn btn-primary">Tạo hóa đơn mới</button>
-            <button type="button" class="btn btn-secondary">Nhập hóa đơn</button>
             <button type="submit" class="btn btn-success">Lưu hóa đơn</button>
           </form>
         </div>

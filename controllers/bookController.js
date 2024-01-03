@@ -17,12 +17,16 @@ exports.getdlSach = async (req, res, next) => {
   };
   res.render("sach/dlsach", data);
 };
-
-exports.deleteTheLoai = async (req, res, next) => {
-  const id = req.params.id;
-  console.log(id);
-  const theloai = await theloaiModel.findByIdAndDelete(id);
+const deleteByID = async (id, req, res, model) => {
+  await model.findByIdAndDelete(id);
   res.redirect(req.headers.referer || "/");
+};
+exports.deleteTheLoai = async (req, res, next) => {
+  deleteByID(req.params.id, req, res, theloaiModel);
+};
+
+exports.deleteNXB = async (req, res, next) => {
+  deleteByID(req.params.id, req, res, nxbModel);
 };
 
 exports.qlsach = async (req, res, next) => {
@@ -131,6 +135,13 @@ exports.taoPhieuNhap = async (req, res, next) => {
   res.redirect(req.headers.referer);
 };
 
+exports.deletePhieuNhap = async (req, res, next) => {
+  deleteByID(req.params.id, req, res, pNhapModel);
+};
+
+exports.deleteCTPhieuNhap = async (req, res, next) => {
+  deleteByID(req.params.id, req, res, ctpnhapModel);
+};
 // ban sach
 exports.renderPagebanSach = async (req, res, next) => {
   const hoaDons = await hoaDonModel.find({}).populate("KhachHang");
@@ -181,6 +192,14 @@ exports.taoHoaDon = async (req, res, next) => {
     });
   });
   res.redirect(req.headers.referer);
+};
+
+exports.deleteHoadon = async (req, res, next) => {
+  deleteByID(req.params.id, req, res, hoaDonModel);
+};
+
+exports.deleteCTHoadon = async (req, res, next) => {
+  deleteByID(req.params.id, req, res, ctHoaDonModel);
 };
 // tim kiem sach
 exports.renderPageTimKiemSach = async (req, res, next) => {

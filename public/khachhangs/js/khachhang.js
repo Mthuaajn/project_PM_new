@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // CAP NHAT THONG TIN KHACH HANG END
 
-    // Xử lý sự kiện xóa khách hàng
+    // Xử lý sự kiện xóa khách hàng START
     const addButton = document.getElementById("btnThemKhachHang");
 
     addButton.addEventListener("click", function () {
@@ -226,19 +226,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Add the relevant data to each cell in the row
                 row.innerHTML = `
-       <th scope="row">${khachHang.maKhachHang}</th>
-       <td>${khachHang.hoTen}</td>
+                <th scope="row">${khachHang.maKhachHang}</th>
+                <td>${khachHang.hoTen}</td>
        <td>${khachHang.diaChi}</td>
        <td>${khachHang.email}</td>
        <td>${khachHang.dienThoai}</td>
        <td>${khachHang.tienNo}</td>
        <td style="display:none;">${khachHang._id}</td>
        <td>
-           <button class="delete-button" data-customer-id="${khachHang._id}">
-               <img src="/img/icon-bin.svg" alt="" />
-           </button>
+       <button class="delete-button" data-customer-id="${khachHang._id}">
+       <img src="/img/icon-bin.svg" alt="" />
+       </button>
        </td>
-   `;
+       `;
 
                 // Append the row to the tbody
                 customerList.appendChild(row);
@@ -246,4 +246,15 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         })
     });
+    // Xử lý sự kiện xóa khách hàng END
+
+    // CAP NHAT DANH SACH KHACH HANG START
+    const capNhatDanhSachButton = document.getElementById("btnCapNhatDanSachKhachHang");
+
+    capNhatDanhSachButton.addEventListener("click", function () {
+        window.location.reload()
+
+    })
+    // CAP NHAT DANH SACH KHACH HANG START
+
 });

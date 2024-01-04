@@ -72,7 +72,7 @@
               >
                 <option selected>Chọn nhà xuất bản</option>
                 {{#each nxbs}}
-                  <option value="{{tennxb}}">{{tennxb}}</option>
+                  <option value="{{_id}}">{{tennxb}}</option>
                 {{/each}}
               </select>
             </div>
@@ -130,3 +130,8 @@
     ></script>
   </body>
 </html>
+
+<script>
+  $(document).ready(function() { const urlParams = new URLSearchParams(window.location.search);
+  const message = urlParams.get('message'); if (message) { alert(message); } });
+</script>

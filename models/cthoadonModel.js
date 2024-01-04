@@ -27,6 +27,5 @@ const ctHoaDonSchema = new mongoose.Schema({
 ctHoaDonSchema.pre("find", function () {
   this.populate("book");
 });
-
 const ctHoaDonModel = mongoose.model("ctHoaDon", ctHoaDonSchema);
 module.exports = ctHoaDonModel;

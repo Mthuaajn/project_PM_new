@@ -1,47 +1,92 @@
 [
   {
     "masach": "MS001",
-    "tensach": "Sách A",
-    "theloai": "Thể loại A",
+    "tensach": "Ky thuat lap trinh C",
+    "theloai": "Tiểu thuyết ngôn tình",
     "tacgia": "Tác giả A",
-    "nhaxuatban": "Nhà xuất bản A",
-    "dongia": 10000,
-    "soluongton": 100
+    "nhaxuatban": "Nhà Xuất Bản Giáo Dục",
+    "dongia": 15000,
+    "soluongton": 150
   },
   {
     "masach": "MS002",
-    "tensach": "Sách B",
-    "theloai": "Thể loại B",
+    "tensach": "Cuốn sách 2",
+    "theloai": "Truyện tranh",
     "tacgia": "Tác giả B",
-    "nhaxuatban": "Nhà xuất bản B",
-    "dongia": 15000,
-    "soluongton": 50
+    "nhaxuatban": "Nhà Xuất Bản Trẻ",
+    "dongia": 20000,
+    "soluongton": 220
   },
   {
     "masach": "MS003",
-    "tensach": "Sách C",
-    "theloai": "Thể loại C",
+    "tensach": "Cuốn sách 3",
+    "theloai": "Khoa học - Kỹ thuật",
     "tacgia": "Tác giả C",
-    "nhaxuatban": "Nhà xuất bản C",
-    "dongia": 12000,
+    "nhaxuatban": "Nhà Xuất Bản Kim Đồng",
+    "dongia": 18500,
     "soluongton": 120
   },
   {
     "masach": "MS004",
-    "tensach": "Sách D",
-    "theloai": "Thể loại D",
+    "tensach": "Cuốn sách 4",
+    "theloai": "Khoa học - Kỹ thuật",
     "tacgia": "Tác giả D",
-    "nhaxuatban": "Nhà xuất bản D",
-    "dongia": 18000,
-    "soluongton": 38
+    "nhaxuatban": "Nhà Xuất Bản Văn Học",
+    "dongia": 25000,
+    "soluongton": 180
   },
   {
     "masach": "MS005",
-    "tensach": "Sách E",
-    "theloai": "Thể loại E",
+    "tensach": "Cuốn sách 5",
+    "theloai": "Khoa học - Kỹ thuật",
     "tacgia": "Tác giả E",
-    "nhaxuatban": "Nhà xuất bản E",
-    "dongia": 13000,
-    "soluongton": 350
+    "nhaxuatban": "Nhà Xuất Bản Thế Giới",
+    "dongia": 22000,
+    "soluongton": 175
+  },
+  {
+    "masach": "MS006",
+    "tensach": "Cuốn sách 6",
+    "theloai": "Lịch sử - Chính trị",
+    "tacgia": "Tác giả F",
+    "nhaxuatban": "Nhà Xuất Bản Tổng Hợp TP.HCM",
+    "dongia": 30000,
+    "soluongton": 320
+  },
+  {
+    "masach": "MS007",
+    "tensach": "Cuốn sách 7",
+    "theloai": "Kinh doanh - Quản trị",
+    "tacgia": "Tác giả G",
+    "nhaxuatban": "Nhà Xuất Bản Hồng Đức",
+    "dongia": 17000,
+    "soluongton": 550
+  },
+  {
+    "masach": "MS008",
+    "tensach": "Cuốn sách 8",
+    "theloai": "Kinh doanh - Quản trị",
+    "tacgia": "Tác giả H",
+    "nhaxuatban": "Nhà Xuất Bản Đại Học Quốc Gia Hà Nội",
+    "dongia": 23000,
+    "soluongton": 420
+  },
+  {
+    "masach": "MS009",
+    "tensach": "Cuốn sách 9",
+    "theloai": "Văn học - Tiểu thuyết",
+    "tacgia": "Tác giả I",
+    "nhaxuatban": "Nhà Xuất Bản Tri Thức",
+    "dongia": 28000,
+    "soluongton": 283
+  },
+  {
+    "masach": "MS010",
+    "tensach": "Cuốn sách 10",
+    "theloai": "Văn học - Tiểu thuyết",
+    "tacgia": "Tác giả J",
+    "nhaxuatban": "Nhà Xuất Bản Tri Thức",
+    "dongia": 21000,
+    "soluongton": 157
   }
 ]

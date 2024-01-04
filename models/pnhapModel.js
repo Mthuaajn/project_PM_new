@@ -27,7 +27,7 @@ const pnhapSchema = new mongoose.Schema(
 pnhapSchema.pre("find", function () {
   this.populate({
     path: "chphieunhap",
-    select: "tongTien maPhieuNhap",
+    select: "tongTien maPhieuNhap soLuong",
   });
 });
 
@@ -36,6 +36,13 @@ pnhapSchema.virtual("tongTien").get(function () {
     return tong + chphieunhap.tongTien;
   }, 0);
 });
+
+pnhapSchema.virtual("SoLuong").get(function () {
+  return this.chphieunhap.reduce((tong, chphieunhap) => {
+    return tong + chphieunhap.soLuong;
+  }, 0);
+});
+
 const pNhapModel = mongoose.model("phieunhap", pnhapSchema);
 
 module.exports = pNhapModel;

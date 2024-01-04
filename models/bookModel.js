@@ -32,5 +32,12 @@ const bookSchema = new mongoose.Schema({
   },
 });
 
+bookSchema.pre("save", async function (next) {
+  if (this.soluongton <= 0) {
+    await this.remove();
+  }
+  next();
+});
+
 const Book = mongoose.model("Book", bookSchema);
 module.exports = Book;

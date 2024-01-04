@@ -93,6 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${phieuThu.tenKhachHang}</td>
                     <td>${phieuThu.ngaynhap}</td>
                     <td>${phieuThu.soTienThu}</td>
+                    <td>${phieuThu.diaChi}</td>
+                    <td>${phieuThu.email}</td>
    `;
 
                     // Append the row to the tbody

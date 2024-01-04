@@ -151,10 +151,24 @@ const deleteKhachHang = async (req, res, next) => {
 const thuTienGet = async (req, res, next) => {
     const KhachHangs = await KhachHang.find().lean();
     const PhieuThus = await PhieuThu.find().lean();
-    console.log(PhieuThus);
+    const newData = PhieuThus.map((phieuThu) => {
+        const khachHang = KhachHangs.find((khachHang) => {
+            return phieuThu.khachHang.toString() === khachHang._id.toString();
+        });
+        return {
+            maPhieuThu: phieuThu.maPhieuThu,
+            soTienThu: phieuThu.soTienThu,
+            khachHang: phieuThu.khachHang,
+            ngaynhap: phieuThu.ngaynhap,
+            tenKhachHang: khachHang.hoTen,
+            diaChi: khachHang.diaChi,
+            email: khachHang.email,
+        };
+    });
+    console.log(newData);
     res.render("khach_hang/thutien", {
         khachHangs: KhachHangs,
-        phieuThus: PhieuThus,
+        phieuThus: newData,
         messages: [],
     });
 };
@@ -165,6 +179,7 @@ const thuTienPost = async (req, res, next) => {
     const errorMessages = [];
     const phieuThu = await PhieuThu.findOne({maPhieuThu: maPhieuThu});
     const khachHang = await KhachHang.findById(maKhachHang);
+    const khachHangs = await KhachHang.find().lean();
 
     if (phieuThu) {
         errorMessages.push({
@@ -201,10 +216,21 @@ const thuTienPost = async (req, res, next) => {
         });
     }
     const PhieuThus = await PhieuThu.find().lean();
-
+    const newData = PhieuThus.map((phieuThu) => {
+        const khachHang = khachHangs.find((khachHang) => phieuThu.khachHang.toString() === khachHang._id.toString());
+        return {
+            maPhieuThu: phieuThu.maPhieuThu,
+            soTienThu: phieuThu.soTienThu,
+            khachHang: phieuThu.khachHang,
+            ngaynhap: phieuThu.ngaynhap,
+            tenKhachHang: khachHang.hoTen,
+            diaChi: khachHang.diaChi,
+            email: khachHang.email,
+        };
+    });
     const messages = [...errorMessages, ...successMessages];
 
-    return res.json({phieuThus: PhieuThus, messages});
+    return res.json({phieuThus: newData, messages});
 };
 
 const deletePhieuThu = async (req, res, next) => {

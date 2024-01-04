@@ -12,36 +12,27 @@ const getBaoCao = async (khachHangId, month, noDau) => {
                 $gte: startDate,
                 $lte: endDate,
             },
+            makh: khachHangId,
         })
         .populate("book")
         .lean();
-
     const phieuThuList = await PhieuThu.find({
         ngaynhap: {
             $gte: startDate,
             $lte: endDate,
         },
+        khachHang: khachHangId,
     }).lean();
 
     const tongMuaCuaThang = hoaDonList.reduce((prev, cur) => {
-        const khachHangIdHoaDon = cur.makh._id.toString();
-        if (khachHangId === khachHangIdHoaDon) {
-            const tongTien = cur.ctHoaDon.reduce((prev, cur) => prev + cur.tongTien, 0);
-            return prev + tongTien;
-        } else {
-            return prev;
-        }
+        const tongTien = cur.ctHoaDon.reduce((prev, cur) => prev + cur.tongTien, 0);
+        return prev + tongTien;
     }, 0);
 
     const tongThuCuaThang = phieuThuList.reduce((prev, cur) => {
-        const khachHangIdPhieuThu = cur.khachHang.toString();
-        if (khachHangId === khachHangIdPhieuThu) {
-            return prev + cur.soTienThu;
-        } else {
-            return prev;
-        }
+        return prev + cur.soTienThu;
     }, 0);
-    const phatSinhCuaThang = tongThuCuaThang - tongMuaCuaThang;
+    const phatSinhCuaThang = tongMuaCuaThang - tongThuCuaThang;
 
     return {
         noDau: noDau,

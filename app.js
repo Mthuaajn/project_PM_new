@@ -41,19 +41,14 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/sach", bookRouter);
 app.use("/khachhangs", khachHangRouter);
 app.use("/timkiemkhachhang", timkiemkhachhang);
-//<<<<<<< HEAD
 
-// app.use("/", userRouter);
-// app.get("/home", (req, res) => {
-//   res.render("home");
-// });
+app.use("/", userRouter);
+app.get("/home", (req, res) => {
+  res.render("home");
+});
 
-//=======
 app.use("/ton", ton);
 app.use("/nocong", nocong);
 app.use("/quydinh", quydinh);
-//>>>>>>> 7b9d1f6 (ADD LAYOUT)
-app.get("/", (req, res) => {
-  res.render("home");
-});
+
 module.exports = app;

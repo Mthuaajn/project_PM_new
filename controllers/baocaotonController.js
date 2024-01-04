@@ -88,6 +88,5 @@ exports.getDATA = async (req, res, next) => {
   }
 
   const ctTon = await ChiTietTon.find({}).populate("MaSach");
-  console.log(ctTon);
   res.render("baocao/ton", { data, ctTon });
 };

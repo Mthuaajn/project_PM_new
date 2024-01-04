@@ -35,13 +35,19 @@ hoaDonSchema.virtual("tongTien").get(function () {
   }, 0);
 });
 
+hoaDonSchema.virtual("SoLuong").get(function () {
+  return this.ctHoaDon.reduce((total, ctHoaDon) => {
+    return total + ctHoaDon.soLuong;
+  }, 0);
+});
+
 hoaDonSchema.pre("find", function () {
   this.populate({
     path: "ctHoaDon",
-    select: "tongTien maHoaDon",
+    select: "tongTien maHoaDon soLuong",
   }).populate({
     path: "makh",
-    select: "maKhachHang", 
+    select: "maKhachHang",
   });
 });
 const HoaDonModel = mongoose.model("HoaDon", hoaDonSchema);

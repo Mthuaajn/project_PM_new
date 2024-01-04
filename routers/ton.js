@@ -1,8 +1,6 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-
-router.get('/', (req, res, next) => {
-    res.render('baocao/ton', { title: 'Book Management' });
-});
+const LapBaoCaoTonController = require("./../controllers/baocaotonController");
+router.get("/", LapBaoCaoTonController.LapBaoCaoTon);
 
 module.exports = router;

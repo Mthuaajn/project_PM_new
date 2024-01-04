@@ -57,6 +57,7 @@ exports.getDATA = async (req, res, next) => {
         luongNhap[masach] = 0;
       }
       tondau[masach] += chitiet.book.soluongton;
+      tondau[masach] -= chitiet.soLuong;
       luongNhap[masach] += chitiet.soLuong;
     });
   });
@@ -71,15 +72,15 @@ exports.getDATA = async (req, res, next) => {
   });
   for (let key in tondau) {
     toncuoi[key] = tondau[key] + luongNhap[key] - luongBan[key];
-    phatsinh[key] = luongNhap[key] - luongBan[key];
+    phatsinh[key] = toncuoi[key] - tondau[key];
   }
   for (const maSach in tondau) {
     const ctton = new ChiTietTon({
       MaBaoCaoTon: `${maSach}-${month}-${year}`,
       MaSach: maSach,
       TonDau: tondau[maSach],
-      TonCuoi: toncuoi[maSach],
-      PhatSinh: phatsinh[maSach] || 0,
+      TonCuoi: phatsinh[maSach],
+      PhatSinh: toncuoi[maSach] || 0,
     });
     if (ctton !== null) {
       await ctton.save();

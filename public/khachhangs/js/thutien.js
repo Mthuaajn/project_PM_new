@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Append the row to the tbody
                     phieuThuList.appendChild(row);
                     loadDeleteButton();
+                    capNhatTienNo();
                 });
             });
     });

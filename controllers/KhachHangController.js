@@ -198,8 +198,11 @@ const thuTienPost = async (req, res, next) => {
         await KhachHang.findByIdAndUpdate(
             {_id: maKhachHang},
             {
-                tienNo: newSoTien,
-            }
+                $set: {
+                    tienNo: newSoTien,
+                },
+            },
+            {new: true}
         );
 
         const data = {

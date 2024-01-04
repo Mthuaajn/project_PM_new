@@ -37,7 +37,7 @@ const getBaoCao = async (khachHangId, month, noDau) => {
     return {
         noDau: noDau,
         phatSinh: phatSinhCuaThang,
-        noCuoi: noDau + phatSinhCuaThang,
+        noCuoi: noDau + phatSinhCuaThang <= 0 ? 0 : noDau + phatSinhCuaThang,
     };
 };
 

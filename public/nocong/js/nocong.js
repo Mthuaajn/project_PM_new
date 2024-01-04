@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let i = 1; i <= 12; i++) {
         const option = document.createElement("option");
         option.value = i;
-        option.textContent = `${i}/2023`;
+        option.textContent = `${i}/2024`;
         select.appendChild(option);
     }
 

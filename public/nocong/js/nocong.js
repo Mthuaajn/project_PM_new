@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Generate options for months from 1 to 12
     for (let i = 1; i <= 12; i++) {
         const option = document.createElement("option");
-        option.value = i;
+        option.value = `${i}/2024`;
         option.textContent = `${i}/2024`;
         select.appendChild(option);
     }

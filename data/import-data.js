@@ -8,6 +8,7 @@ const bookModel = require("./../models/bookModel");
 const UserModel = require("./../models/userModel");
 const khachHangModel = require("./../models/khachHangModel");
 const phieuThupModel = require("../models/phieuThuModel");
+
 const DB = process.env.DATABASE.replace("<PASSWORD>", process.env.DATABASE_PASSWORD);
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -28,6 +29,7 @@ const theloai = JSON.parse(fs.readFileSync(`${__dirname}/theloai.json`, "utf-8")
 const books = JSON.parse(fs.readFileSync(`${__dirname}/book.json`, "utf-8"));
 const khachHang = JSON.parse(fs.readFileSync(`${__dirname}/khachhang.json`, "utf-8"));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/user.json`, "utf-8"));
+const phieuThu = JSON.parse(fs.readFileSync(`${__dirname}/phieuthu.json`, "utf-8"));
 // Import data into database
 const importData = async () => {
     try {
@@ -35,7 +37,7 @@ const importData = async () => {
         await nxbModel.create(nxb);
         await theloaiModel.create(theloai);
         await khachHangModel.create(khachHang);
-        await UserModel.create(users);
+        await phieuThupModel.create(phieuThu)
         console.log("data successfully loaded");
     } catch (err) {
         console.log(err.message);
@@ -50,7 +52,6 @@ const deleteData = async () => {
         await theloaiModel.deleteMany({});
         await bookModel.deleteMany({});
         await UserModel.deleteMany({});
-        await khachHangModel.deleteMany({});
         await phieuThupModel.deleteMany({});
         console.log("data successfully deleted");
     } catch (err) {

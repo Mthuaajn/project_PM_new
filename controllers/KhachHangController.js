@@ -172,14 +172,14 @@ const thuTienPost = async (req, res, next) => {
         });
     }
 
-    if (soTienThu > customerLoan) {
+    if (soTienThu > khachHang.tienNo) {
         errorMessages.push({
             message: "Số tiền thu không được vượt quá số tiền khách hàng đang nợ",
         });
     }
 
     if (errorMessages.length === 0) {
-        const newSoTien = soTienThu - customerLoan;
+        const newSoTien = Math.abs(soTienThu - khachHang.tienNo);
         await KhachHang.findByIdAndUpdate(
             {_id: maKhachHang},
             {

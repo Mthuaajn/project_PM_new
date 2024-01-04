@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
+const {baoCaoCongNoRender, baoCaoCongNoPost} = require("../controllers/baoCaoController");
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-    res.render('baocao/nocong', { title: 'Book Management' });
-});
+router.get("/", baoCaoCongNoRender);
+router.post("/", baoCaoCongNoPost);
 
 module.exports = router;

@@ -54,7 +54,6 @@
                             <th scope="col">Tên Khách hàng</th>
                             <th scope="col">Ngày lập</th>
                             <th scope="col">Số tiền thu</th>
-                            <th scope="col">Thực hiện</th>
                         </tr>
                     </thead>
                     <tbody id="phieu-thu-list">
@@ -64,11 +63,6 @@
                                 <td>{{tenKhachHang}}</td>
                                 <td>{{ngaynhap}}</td>
                                 <td>{{soTienThu}}</td>
-                                <td id="delete">
-                                    <button id="delete" class="delete-button" data-phieu-thu-id="{{_id}}">
-                                        <img id="delete" src="/img/icon-bin.svg" alt="" />
-                                    </button>
-                                </td>
                             </tr>
                         {{/each}}
                     </tbody>

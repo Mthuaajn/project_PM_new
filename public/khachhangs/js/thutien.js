@@ -33,11 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             <td>${phieuThu.tenKhachHang}</td>
                             <td>${phieuThu.ngaynhap}</td>
                             <td>${phieuThu.soTienThu}</td>
-                            <td id="delete">
-                                <button id="delete" class="delete-button" data-phieu-thu-id="${phieuThu._id}">
-                                    <img id="delete" src="/img/icon-bin.svg" alt="" />
-                                </button>
-                            </td>
            `;
 
                             // Append the row to the tbody
@@ -98,11 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${phieuThu.tenKhachHang}</td>
                     <td>${phieuThu.ngaynhap}</td>
                     <td>${phieuThu.soTienThu}</td>
-                    <td id="delete">
-                        <button id="delete" class="delete-button" data-phieu-thu-id="${phieuThu._id}">
-                            <img id="delete" src="/img/icon-bin.svg" alt="" />
-                        </button>
-                    </td>
    `;
 
                     // Append the row to the tbody

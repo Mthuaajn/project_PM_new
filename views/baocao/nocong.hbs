@@ -1,94 +1,77 @@
-<html lang='en'>
+<html lang="en">
 
-<head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>Lập báo công nợ</title>
-    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet'
-        integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous' />
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css' />
-    <link rel='stylesheet' href='/css/baocao/ton.css' />
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lập báo công nợ</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+        <link rel="stylesheet" href="/css/baocao/ton.css" />
+    </head>
 
-<body>
-    <h1 id='title'>Báo cáo công nợ</h1>
-    <section id='book-management'>
-        <div id='book-form'>
-            <div id='main-form'>
+    <body>
+        <h1 id="title">Báo cáo công nợ</h1>
+        <section id="book-management">
+            <div id="book-form">
+                <div id="main-form">
 
-                <div class='mb-3 form-item'>
+                    <div class="mb-3 form-item">
 
-                    <select class='form-select' id='customerId' placeholder="Chọn tháng">
-                        <option value='1'>1/2023</option>
-                        <option value='2'>2/2023</option>
-                        <option value='2'>3/2023</option>
-                        <option value='2'>4/2023</option>
-                        <option value='2'>5/2023</option>
-                        <option value='2'>6/2023</option>
-                        <!-- Thêm các tùy chọn khác nếu cần -->
-                    </select>
+                        <select class="form-select" id="targetMonth" placeholder="Chọn tháng">
+                            <option value="1">1/2023</option>
+                            <option value="2">2/2023</option>
+                            <option value="3">3/2023</option>
+                            <option value="4">4/2023</option>
+                            <option value="5">5/2023</option>
+                            <option value="6">6/2023</option>
+                            <option value="7">7/2023</option>
+                            <option value="8">8/2023</option>
+                            <option value="9">9/2023</option>
+                            <!-- Thêm các tùy chọn khác nếu cần -->
+                        </select>
+                    </div>
+
                 </div>
-
+                <div id="btn-list">
+                    <button type="button" class="btn btn" id="lapBaoCaoBtn">Lập báo cáo</button>
+                </div>
             </div>
-            <div id='btn-list'>
-                <button type='button' class='btn btn'>Lập báo cáo</button>
+            <div id="book-list">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="5" class="table-heading"><b>Báo cáo công nợ</b></th>
+                        </tr>
+                        <tr>
+                            <th scope="col" colspan="5" id="selectedMonth">
+                                Tháng:
+                            </th>
+                        </tr>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Khách hàng</th>
+                            <th scope="col">Nợ đầu</th>
+                            <th scope="col">Phát sinh</th>
+                            <th scope="col">Nợ cuối</th>
+                        </tr>
+                    </thead>
+                    <tbody id="no-cong-list">
+                        {{#each danhSachNoCong}}
+                            <tr>
+                                <th scope="row">{{stt}}</th>
+                                <td>{{hoTen}}</td>
+                                <td>{{noDau}}</td>
+                                <td>{{phatSinh}}</td>
+                                <td>{{noCuoi}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
-        </div>
-        <div id='book-list'>
-            <table class='table table-bordered'>
-                <thead>
-                    <tr>
-                        <th scope="col" colspan="5" class="table-heading"><b>Báo cáo công nợ</b></th>
-                    </tr>
-                    <tr>
-                        <th scope="col" colspan="5" id="selectedMonth">
-                            Tháng:
-                        </th>
-                    </tr>
-                    <tr>
-                        <th scope='col'>STT</th>
-                        <th scope="col">Khách hàng</th>
-                        <th scope='col'>Nợ đầu</th>
-                        <th scope='col'>Phát sinh</th>
-                        <th scope='col'>Nợ cuối</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope='row'>1</th>
-                        <td>Nguyễn Minh Thuận</td>
-                        <td>0</td>
-                        <td>10000</td>
-                        <td>10000</td>
-                    </tr>
-                    <tr>
-                        <th scope='row'>2</th>
-                        <td>Nguyễn Hữu Thương</td>
-                        <td>20000</td>
-                        <td>-20000</td>
-                        <td>0</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js'
-        integrity='sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL'
-        crossorigin='anonymous'></script>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="./js/nocong.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get the necessary elements
-            var selectElement = document.getElementById('customerId');
-            var monthTextElement = document.getElementById('selectedMonth');
-
-            // Add an event listener to the select element
-            selectElement.addEventListener('change', function () {
-                // Update the "Tháng: " text based on the selected value
-                monthTextElement.textContent = 'Tháng: ' + selectElement.options[selectElement.selectedIndex].text;
-            });
-        });
-    </script>
-</body>
+    </body>
 
 </html>

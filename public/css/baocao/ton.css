@@ -105,7 +105,7 @@
 
 #book-list {
     width: 100%;
-    max-height: 30rem;
+    max-height: 50rem;
     overflow-y: auto;
 }
 

@@ -171,6 +171,13 @@ const thuTienPost = async (req, res, next) => {
             message: "Mã phiếu thu đã tồn tại, vui lòng nhập lại",
         });
     }
+
+    if (soTienThu > customerLoan) {
+        errorMessages.push({
+            message: "Số tiền thu không được vượt quá số tiền khách hàng đang nợ",
+        });
+    }
+
     if (errorMessages.length === 0) {
         const newSoTien = soTienThu - customerLoan;
         await KhachHang.findByIdAndUpdate(

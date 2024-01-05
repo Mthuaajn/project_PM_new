@@ -10,8 +10,8 @@ const renderKhachHangs = async (req, res) => {
             messages: [],
         });
     } catch (error) {
-        console.log({error});
-        return res.render("error", {errorMessage: error.message});
+        console.log({ error });
+        return res.render("error", { errorMessage: error.message });
     }
 };
 
@@ -23,8 +23,8 @@ const renderTimKiemKhachHangs = async (req, res) => {
             khachHangs: KhachHangs,
         });
     } catch (error) {
-        console.log({error});
-        return res.render("error", {errorMessage: error.message});
+        console.log({ error });
+        return res.render("error", { errorMessage: error.message });
     }
 };
 
@@ -33,9 +33,9 @@ const createKhachHang = async (req, res, next) => {
         const errorMessages = [];
         const successMessages = [];
 
-        const {maKhachHang, hoTen, diaChi, dienThoai, email, tienNo} = req.body;
+        const { maKhachHang, hoTen, diaChi, dienThoai, email, tienNo } = req.body;
 
-        const khachHang = await KhachHang.findOne({maKhachHang}).lean();
+        const khachHang = await KhachHang.findOne({ maKhachHang }).lean();
         if (khachHang) {
             errorMessages.push({
                 message: "Mã Khách Hàng bị trùng, vui lòng nhập lại",
@@ -69,23 +69,23 @@ const createKhachHang = async (req, res, next) => {
 
         const messages = [...errorMessages, ...successMessages];
 
-        return res.json({messages, khachHangs: KhachHangs});
+        return res.json({ messages, khachHangs: KhachHangs });
     } catch (error) {
-        console.log({error});
-        return res.render("error", {errorMessage: error.message});
+        console.log({ error });
+        return res.render("error", { errorMessage: error.message });
     }
 };
 
 const renderKhachHangEdit = async (req, res, next) => {
     const KhachHang = await KhachHang.findById(req.params.id).lean();
-    res.render("edit", {KhachHang});
+    res.render("edit", { KhachHang });
 };
 
 const editKhachHang = async (req, res, next) => {
     const errorMessages = [];
     const successMessages = [];
 
-    const {maKhachHang, hoTen, diaChi, dienThoai, email, tienNo} = req.body;
+    const { maKhachHang, hoTen, diaChi, dienThoai, email, tienNo } = req.body;
 
     if (!maKhachHang || !hoTen || !diaChi || !dienThoai || !email || !tienNo) {
         errorMessages.push({
@@ -106,8 +106,8 @@ const editKhachHang = async (req, res, next) => {
         });
     }
     if (errorMessages.length === 0) {
-        const {id} = req.params;
-        await KhachHang.updateOne({_id: id}, req.body);
+        const { id } = req.params;
+        await KhachHang.updateOne({ _id: id }, req.body);
         successMessages.push({
             message: "Cập nhật khách hàng thành công",
         });
@@ -116,11 +116,11 @@ const editKhachHang = async (req, res, next) => {
 
     const messages = [...errorMessages, ...successMessages];
 
-    return res.json({messages, khachHangs: KhachHangs});
+    return res.json({ messages, khachHangs: KhachHangs });
 };
 
 const deleteKhachHang = async (req, res, next) => {
-    const {id} = req.params;
+    const { id } = req.params;
     const errorMessages = [];
     const successMessages = [];
 
@@ -136,7 +136,7 @@ const deleteKhachHang = async (req, res, next) => {
     }
 
     if (errorMessages.length === 0) {
-        await KhachHang.remove({_id: id});
+        await KhachHang.remove({ _id: id });
         successMessages.push({
             message: "Xóa khách hàng thành công",
         });
@@ -145,7 +145,7 @@ const deleteKhachHang = async (req, res, next) => {
 
     const messages = [...errorMessages, ...successMessages];
 
-    return res.json({messages, khachHangs: KhachHangs});
+    return res.json({ messages, khachHangs: KhachHangs });
 };
 
 const thuTienGet = async (req, res, next) => {
@@ -155,6 +155,17 @@ const thuTienGet = async (req, res, next) => {
         const khachHang = KhachHangs.find((khachHang) => {
             return phieuThu.khachHang.toString() === khachHang._id.toString();
         });
+
+        if (!khachHang) return {
+            maPhieuThu: "",
+            soTienThu: "",
+            khachHang: "",
+            ngaynhap: "",
+            tenKhachHang: "",
+            diaChi: "",
+            email: "",
+        };
+
         return {
             maPhieuThu: phieuThu.maPhieuThu,
             soTienThu: phieuThu.soTienThu,
@@ -174,10 +185,10 @@ const thuTienGet = async (req, res, next) => {
 };
 
 const thuTienPost = async (req, res, next) => {
-    const {maKhachHang, maPhieuThu, customerLoan, soTienThu} = req.body;
+    const { maKhachHang, maPhieuThu, customerLoan, soTienThu } = req.body;
     const successMessages = [];
     const errorMessages = [];
-    const phieuThu = await PhieuThu.findOne({maPhieuThu: maPhieuThu});
+    const phieuThu = await PhieuThu.findOne({ maPhieuThu: maPhieuThu });
     const khachHang = await KhachHang.findById(maKhachHang);
     const khachHangs = await KhachHang.find().lean();
 
@@ -196,13 +207,13 @@ const thuTienPost = async (req, res, next) => {
     if (errorMessages.length === 0) {
         const newSoTien = Math.abs(soTienThu - khachHang.tienNo);
         await KhachHang.findByIdAndUpdate(
-            {_id: maKhachHang},
+            { _id: maKhachHang },
             {
                 $set: {
                     tienNo: newSoTien,
                 },
             },
-            {new: true}
+            { new: true }
         );
 
         const data = {
@@ -221,7 +232,15 @@ const thuTienPost = async (req, res, next) => {
     const PhieuThus = await PhieuThu.find().lean();
     const newData = PhieuThus.map((phieuThu) => {
         const khachHang = khachHangs.find((khachHang) => phieuThu.khachHang.toString() === khachHang._id.toString());
-        return {
+        if (!khachHang) return {
+            maPhieuThu: "",
+            soTienThu: "",
+            khachHang: "",
+            ngaynhap: "",
+            tenKhachHang: "",
+            diaChi: "",
+            email: "",
+        }; return {
             maPhieuThu: phieuThu.maPhieuThu,
             soTienThu: phieuThu.soTienThu,
             khachHang: phieuThu.khachHang,
@@ -233,18 +252,18 @@ const thuTienPost = async (req, res, next) => {
     });
     const messages = [...errorMessages, ...successMessages];
 
-    return res.json({phieuThus: newData, messages});
+    return res.json({ phieuThus: newData, messages });
 };
 
 const deletePhieuThu = async (req, res, next) => {
-    const {id} = req.params;
+    const { id } = req.params;
     const errorMessages = [];
     const successMessages = [];
 
     const phieuThu = await PhieuThu.findById(id);
 
     if (phieuThu && errorMessages.length === 0) {
-        await phieuThu.remove({_id: id});
+        await phieuThu.remove({ _id: id });
         successMessages.push({
             message: "Xóa phiếu thu thành công",
         });
@@ -253,12 +272,12 @@ const deletePhieuThu = async (req, res, next) => {
     const PhieuThus = await PhieuThu.find().lean();
     const messages = [...errorMessages, ...successMessages];
 
-    return res.json({messages, phieuThus: PhieuThus});
+    return res.json({ messages, phieuThus: PhieuThus });
 };
 
 const getOne = async (req, res, next) => {
-    const {id} = req.params;
-    const khachHang = await KhachHang.findOne({_id: id});
+    const { id } = req.params;
+    const khachHang = await KhachHang.findOne({ _id: id });
     return res.json(khachHang);
 };
 

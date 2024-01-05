@@ -37,7 +37,6 @@ const importData = async () => {
         await nxbModel.create(nxb);
         await theloaiModel.create(theloai);
         await khachHangModel.create(khachHang);
-        await phieuThupModel.create(phieuThu)
         console.log("data successfully loaded");
     } catch (err) {
         console.log(err.message);
@@ -52,7 +51,6 @@ const deleteData = async () => {
         await theloaiModel.deleteMany({});
         await bookModel.deleteMany({});
         await UserModel.deleteMany({});
-        await phieuThupModel.deleteMany({});
         console.log("data successfully deleted");
     } catch (err) {
         console.log(err.message);

@@ -176,24 +176,20 @@ exports.renderPagebanSach = async (req, res, next) => {
 };
 
 exports.taoCTHoaDon = async (req, res, next) => {
-  try {
-    const query = {};
-    query["tensach"] = req.body.bookName;
-    const book = await bookModel.findOne(query);
-    const lastHoaDon = await ctHoaDonModel.findOne().sort("-maHoaDon");
-    const newMaHoaDon = lastHoaDon ? lastHoaDon.maHoaDon + 1 : 1;
-    const newCTHoaDon = {
-      maHoaDon: newMaHoaDon,
-      book,
-      soLuong: req.body.bookQuantity,
-      donGia: +req.body.bookPrice,
-      tongTien: req.body.bookQuantity * req.body.bookPrice,
-    };
-    const ctHD = await ctHoaDonModel.create(newCTHoaDon);
-    res.redirect(req.headers.referer);
-  } catch (err) {
-    return res.render("error", { err, layout: false });
-  }
+  const query = {};
+  query["tensach"] = req.body.bookName;
+  const book = await bookModel.findOne(query);
+  const lastHoaDon = await ctHoaDonModel.findOne().sort("-maHoaDon");
+  const newMaHoaDon = lastHoaDon ? lastHoaDon.maHoaDon + 1 : 1;
+  const newCTHoaDon = {
+    maHoaDon: newMaHoaDon,
+    book,
+    soLuong: req.body.bookQuantity,
+    donGia: +req.body.bookPrice,
+    tongTien: req.body.bookQuantity * req.body.bookPrice,
+  };
+  const ctHD = await ctHoaDonModel.create(newCTHoaDon);
+  res.redirect(req.headers.referer);
 };
 
 exports.taoHoaDon = async (req, res, next) => {

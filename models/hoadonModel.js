@@ -52,13 +52,6 @@ hoaDonSchema.pre("find", function () {
   });
 });
 
-hoaDonSchema.pre("save", async function (next) {
-  const khachHang = await khachHangModel.findById(this.khachHangId);
-  if (khachHang.tienNo > 20000) {
-    throw new Error("Không thể bán cho khách hàng nợ quá 20000");
-  }
-  next();
-});
 const HoaDonModel = mongoose.model("HoaDon", hoaDonSchema);
 
 module.exports = HoaDonModel;

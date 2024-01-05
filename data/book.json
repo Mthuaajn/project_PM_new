@@ -10,12 +10,12 @@
   },
   {
     "masach": "MS002",
-    "tensach": "Cuốn sách 2",
+    "tensach": "Cơ sở dữ liệu",
     "theloai": "Truyện tranh",
     "tacgia": "Tác giả B",
     "nhaxuatban": "Nhà Xuất Bản Trẻ",
     "dongia": 20000,
-    "soluongton": 220
+    "soluongton": 100
   },
   {
     "masach": "MS003",
@@ -60,7 +60,7 @@
     "tacgia": "Tác giả G",
     "nhaxuatban": "Nhà Xuất Bản Hồng Đức",
     "dongia": 17000,
-    "soluongton": 550
+    "soluongton": 160
   },
   {
     "masach": "MS008",
@@ -69,7 +69,7 @@
     "tacgia": "Tác giả H",
     "nhaxuatban": "Nhà Xuất Bản Đại Học Quốc Gia Hà Nội",
     "dongia": 23000,
-    "soluongton": 420
+    "soluongton": 38
   },
   {
     "masach": "MS009",

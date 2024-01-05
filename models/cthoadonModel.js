@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const sachModel = require("./../models/bookModel");
 const ctHoaDonSchema = new mongoose.Schema({
   book: {
     type: mongoose.Schema.ObjectId,
@@ -23,13 +23,7 @@ const ctHoaDonSchema = new mongoose.Schema({
     required: true,
   },
 });
-ctHoaDonSchema.pre("save", async function (next) {
-  const sach = await sachModel.findById(this.sachId);
-  if (sach.soLuongTon - this.soLuong < 20) {
-    throw new Error("Số lượng tồn sau khi bán phải ít nhất là 20");
-  }
-  next();
-});
+
 ctHoaDonSchema.pre("find", function () {
   this.populate("book");
 });

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-
+const sachModel = require("./../models/bookModel");
+const khachHangModel = require("./../models/khachHangModel");
 const hoaDonSchema = new mongoose.Schema(
   {
     maHD: {
@@ -49,6 +50,14 @@ hoaDonSchema.pre("find", function () {
     path: "makh",
     select: "maKhachHang",
   });
+});
+
+hoaDonSchema.pre("save", async function (next) {
+  const khachHang = await khachHangModel.findById(this.khachHangId);
+  if (khachHang.tienNo > 20000) {
+    throw new Error("Không thể bán cho khách hàng nợ quá 20000");
+  }
+  next();
 });
 const HoaDonModel = mongoose.model("HoaDon", hoaDonSchema);
 

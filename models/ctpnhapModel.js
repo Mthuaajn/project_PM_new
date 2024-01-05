@@ -1,16 +1,24 @@
 const mongoose = require("mongoose");
-
+const Book = require("./../models/bookModel");
 const chphieunhapSchema = new mongoose.Schema({
   book: {
     type: mongoose.Schema.ObjectId,
     ref: "Book",
     required: true,
+    validate: {
+      validator: async function (bookId) {
+        const book = await Book.findById(bookId);
+        return book && book.soluongton < 150;
+      },
+      message: "Sách phải có số lượng tồn nhỏ hơn 150",
+    },
   },
   maPhieuNhap: {
     type: Number,
     required: true,
   },
   soLuong: {
+    min: 150,
     type: Number,
     required: true,
   },

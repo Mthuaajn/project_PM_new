@@ -12,3 +12,6 @@ Công nghệ sử dụng :
 font-end: html, css,boostrap
 back-end : nodejs
 Database : mongodb
+
+userName:nv1@gmail.com
+password:123
